@@ -1,0 +1,58 @@
+{
+  "name": "mngr",
+  "version": "1.0.0",
+  "description": "Command-line cross-platform MongoDB management TUI tool",
+  "repository": "infely/mngr",
+  "homepage": "https://github.com/infely/mngr",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx pkg -t node12-linux,node12-macos,node12-win --out-path dist ."
+  },
+  "bin": {
+    "mngr": "index.js"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "cli",
+    "gui",
+    "tui",
+    "tool",
+    "manager",
+    "admin",
+    "terminal",
+    "term",
+    "console",
+    "ascii",
+    "unicode",
+    "blessed",
+    "robo3t",
+    "vim",
+    "tmux",
+    "ranger"
+  ],
+  "author": {
+    "name": "infely",
+    "email": "infely@gmail.com",
+    "url": "https://github.com/infely"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "bson": "^4.2.2",
+    "commander": "^7.0.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "mongodb": "3.6.3",
+    "tunnel-ssh": "^4.1.4"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9",
+    "shebang-loader": "^0.0.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "pkg": {
+    "assets": "node_modules/blessed/usr/**/*"
+  }
+}
