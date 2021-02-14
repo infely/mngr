@@ -18,6 +18,7 @@ if (OPTIONS.version) {
 }
 
 if (
+  process.env.TERM &&
   !['linux', 'windows-ansi', 'xterm', 'xterm-256color']
     .includes(process.env.TERM)
 ) {
@@ -26,6 +27,8 @@ if (
 }
 
 global.fs           = require('fs')
+global.path         = require('path')
+global.os           = require('os')
 global._            = require('lodash')
 global.moment       = require('moment')
 global.mongodb      = require('mongodb')
@@ -46,6 +49,7 @@ const THEME         = COLORS ?
     process.env.TERM == 'xterm-256color' ?
       theme(235, '#ebdbb2', 237, 246, 236) :
       theme(0, 7)
+const HISTORY       = path.join(os.homedir(), '.mngr_history')
 const screen        = blessed.screen({smartCSR: true})
 const confirm       = require('./src/widgets/confirm')(screen, THEME)
 const helptext      = require('./src/widgets/helptext')(THEME)
@@ -390,7 +394,7 @@ right.key('/', () => {
     if (value) {
       value = value.replace(/^\//, '')
       if (value) {
-        fs.appendFileSync(`${process.env.HOME}/.mngr_history`, `${value}\n`)
+        fs.appendFileSync(HISTORY, `${value}\n`)
         STATE.history.commands.push(value)
         STATE.history.last = ''
         STATE.history.cursor = 0
@@ -933,10 +937,9 @@ const init = async () => {
     screen._.loader.destroy()
   }
 
-  const historyPath = `${process.env.HOME}/.mngr_history`
-  if (fs.existsSync(historyPath)) {
+  if (fs.existsSync(HISTORY)) {
     STATE.history.commands = fs
-      .readFileSync(historyPath, 'utf-8')
+      .readFileSync(HISTORY, 'utf-8')
       .trim()
       .split('\n')
   }

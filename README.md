@@ -1,6 +1,6 @@
 # mngr: mongodb manager
 
-<p align="center"><img src="https://raw.githubusercontent.com/infely/mongog/master/mngr.gif" width="578" alt="mngr"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/infely/mngr/master/img/mngr.gif" width="578" alt="mngr"></p>
 
 ## About
 

@@ -3,7 +3,9 @@
 module.exports = (screen, doc) => {
   const editor = process.env.EDITOR || 'vim'
   return new Promise((resolve, reject) => {
-    const file = `/tmp/mngr-${moment().unix()}.json`
+    if (process.platform === 'win32') return reject()
+
+    const file = path.join(os.tmpdir(), `mngr-${moment().unix()}.json`)
     let docNew
 
     fs.writeFileSync(file, EJSON.stringify(doc, null, 2))

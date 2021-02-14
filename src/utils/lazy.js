@@ -26,6 +26,37 @@ const lazy = module.exports = {
       }
     } else {
       switch (true) {
+        // ObjectID
+        case /^[0-9A-Fa-f]{24}$/.test(i[1]):
+          i[1] = mongodb.ObjectID(i[1])
+          break
+        case !!(matches = i[1].match(/^\{\$oid:['"]([0-9A-Fa-f]{24})['"]\}$/)):
+          i[1] = mongodb.ObjectID(matches[1])
+          break
+
+        // number
+        case parseFloat(i[1]).toString() === i[1]:
+          i[1] = parseFloat(i[1])
+          break
+
+        // string
+        case (/^['"].*['"]$/).test(i[1]):
+          i[1] = i[1].replace(/^['"](.*)['"]$/, '$1')
+          break
+
+        // date
+        case !!(matches = i[1].match(/^\d{4}-\d{2}-\d{2}(T|\s)\d{2}:\d{2}:\d{2}(\.\d{3})?(\+\d{2}:?\d{2})?$/)):
+          i[1] = moment(matches[0]).toDate()
+          break
+        case !!(matches = i[1].match(/^\{\$date:['"](\d{4}-\d{2}-\d{2}(T|\s)\d{2}:\d{2}:\d{2}(\.\d{3})?((\+\d{2}:?\d{2})|Z)?)['"]\}$/)):
+          i[1] = moment(matches[1]).toDate()
+          break
+
+        // regex
+        case !!(matches = i[1].match(/^\/(.*)\/([imxs]*)$/)):
+          i[1] = {$regex: new RegExp(matches[1], matches[2])}
+          break
+
         case i[1].startsWith('{') && i[1].endsWith('}'):
           i[1] = _.fromPairs(
             _.filter(
@@ -37,23 +68,6 @@ const lazy = module.exports = {
               )
             )
           )
-          break
-        case (/^['"].*['"]$/).test(i[1]):
-          i[1] = i[1].replace(/^['"](.*)['"]$/, '$1')
-          break
-        case parseInt(i[1]).toString() === i[1]:
-          i[1] = parseInt(i[1])
-          break
-        case !!(matches = i[1].match(
-          /^\d{4}-\d{2}-\d{2}(T|\s)\d{2}:\d{2}:\d{2}(\+\d{2}:?\d{2})?$/
-        )):
-          i[1] = moment(`${matches[0]}`).toDate()
-          break
-        case /^[0-9A-Fa-f]{24}$/.test(i[1]):
-          i[1] = mongodb.ObjectID(i[1])
-          break
-        case !!(matches = i[1].match(/^\/(.*)\/([imxs]*)$/)):
-          i[1] = {$regex: new RegExp(matches[1], matches[2])}
           break
       }
       return i
@@ -145,8 +159,6 @@ const lazy = module.exports = {
   stringify: (json, space) => {
     return EJSON.stringify(json, (k, v) => {
       if (v) {
-        if (v.$oid) return {$oid: v.$oid.toString()}
-        if (v.$date) return {$date: moment(v.$date).format()}
         if (v.$regularExpression) return {
           $regex:
             '/' + v.$regularExpression.pattern +
@@ -156,12 +168,10 @@ const lazy = module.exports = {
       return v
     }, space)
       .replace(/\"([^"]+)\":/g, '$1:')
-      .replace(/\{\$(oid|date|regex):\"(.*?)\"\}/g, (...matches) => {
-        return matches[2].replace(/\\\\/g, '\\')
+      .replace(/\{\$regex:\"(.*?)\"\}/g, (...matches) => {
+        return matches[1].replace(/\\\\/g, '\\')
       })
-      .replace(/\{\$regex:(.*?)\}/g, (...matches) => {
-        return matches[1]
-      })
+      .replace(/\{\$regex:(.*?)\}/g, '$1')
   },
 
   preview: (json, space) => {
@@ -169,11 +179,8 @@ const lazy = module.exports = {
       if (v) {
         if (v.$oid) return {$oid: `{magenta-fg}${v.$oid}{/}`}
         if (typeof v === 'number') return {$number: `{magenta-fg}${v}{/}`}
-        if (
-          typeof v === 'string' &&
-          !k.startsWith('$')
-        ) return {$string: `{yellow-fg}${v}{/}`}
-        if (v.$date) return {$date: `{magenta-fg}${moment(v.$date).format()}{/}`}
+        if (typeof v === 'string' && !k.startsWith('$')) return {$string: `{yellow-fg}${v}{/}`}
+        if (v.$date) return {$date: `{magenta-fg}${moment(v.$date).format('YYYY-MM-DD[T]HH:mm:ss.SSSZZ')}{/}`}
       }
       return v
     }, space)
@@ -192,15 +199,6 @@ const lazy = module.exports = {
           case v instanceof mongodb.ObjectID:
             return `{magenta-fg}${v.toString()}{/}`
             break
-          case v instanceof Date:
-            str = moment(v).format(
-              'YYYY-MM-DD' +
-              `[{${colors.fg2}-fg}]T[{/${colors.fg2}-fg}]` +
-              'HH:mm:ss' +
-              `[{${colors.fg2}-fg}]ZZ`
-            )
-            return `{magenta-fg}${str}{/}`
-            break
           case typeof v === 'number':
             return `{magenta-fg}${v}{/}`
             break
@@ -210,6 +208,15 @@ const lazy = module.exports = {
               str = `${str.substr(0, 23)}{gray-fg}~`
             }
             return `{yellow-fg}${str}{/}`
+            break
+          case v instanceof Date:
+            str = moment(v).format(
+              'YYYY-MM-DD' +
+              `[{${colors.fg2}-fg}]T[{/${colors.fg2}-fg}]` +
+              'HH:mm:ss' +
+              `[{${colors.fg2}-fg}].SSS`
+            )
+            return `{magenta-fg}${str}{/}`
             break
           case v instanceof Array:
             str = JSON.stringify(v)
