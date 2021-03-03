@@ -2,7 +2,7 @@
 
 module.exports = (screen, THEME) => {
   return (content = '') => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const box = blessed.box({
         parent: screen,
         top: 'center',

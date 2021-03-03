@@ -166,11 +166,19 @@ const left = blessed.list({
     }
   }
 })
-left.on('keypress', (ch, key) => {
+left.on('keypress', () => {
   STATE.docsCount = null
   drawBottom()
-  right.setData([[]])
   right.width = '100%-17'
+  right.setData([[]])
+  screen.render()
+})
+left.key('r', async () => {
+  if (!STATE.db) {
+    await drawDBs()
+  } else {
+    await drawCollections(STATE.db.s.namespace.db)
+  }
   screen.render()
 })
 left.key(['h', 'left'], async () => {
@@ -182,7 +190,7 @@ left.key(['h', 'left'], async () => {
 left.key('right', () => {
   left.emit('action')
 })
-left.on('action', async (item) => {
+left.on('action', async () => {
   if (!STATE.db) {
     await drawCollections(STATE.dbs[left.selected])
     screen.render()
@@ -191,6 +199,7 @@ left.on('action', async (item) => {
       await drawDBs()
       left.selected = STATE.dbs.indexOf(STATE.db.s.namespace.db)
       STATE.db = undefined
+      drawTop()
       screen.render()
     } else {
       await drawDocuments(STATE.collections[left.selected - 1])
@@ -237,7 +246,7 @@ right.key(['-', '='], async (ch) => {
   )
   screen.render()
 })
-right.key('backspace', async (ch) => {
+right.key('backspace', async () => {
   STATE.offset = 0
   STATE.skip = 0
   await drawDocuments(STATE.collection.s.namespace.collection)
@@ -245,6 +254,15 @@ right.key('backspace', async (ch) => {
 })
 right.key('S-e', () => {
   right.emit('action')
+})
+right.key('r', async () => {
+  await drawDocuments(
+    STATE.collection.s.namespace.collection,
+    STATE.criteria,
+    STATE.projection,
+    STATE.sort
+  )
+  screen.render()
 })
 right.key('i', async () => {
   if (!STATE.docs[right.selected - 1]) {
@@ -273,12 +291,18 @@ right.key('i', async () => {
     panel.destroy()
     screen.render()
   })
-  const doc = await STATE.collection.findOne({
-    _id: STATE.docs[right.selected - 1]._id
+  panel.key('r', async () => {
+    await drawDoc()
   })
-  panel.setContent(lazy.preview(doc, 2))
   panel.focus()
-  screen.render()
+  const drawDoc = async () => {
+    const doc = await STATE.collection.findOne({
+      _id: STATE.docs[right.selected - 1]._id
+    })
+    panel.setContent(lazy.preview(doc, 2))
+    screen.render()
+  }
+  await drawDoc()
 })
 right.key('[', async () => {
   STATE.skip = Math.max(0, STATE.skip - 100)
@@ -288,7 +312,6 @@ right.key('[', async () => {
     STATE.projection,
     STATE.sort
   )
-  screen.render()
 })
 right.key(']', async () => {
   if (STATE.skip + 100 > STATE.docsCount) {
@@ -301,9 +324,11 @@ right.key(']', async () => {
     STATE.projection,
     STATE.sort
   )
-  screen.render()
 })
 right.key('d', () => {
+  if (!help.hidden) {
+    help._hide()
+  }
   const panel = blessed.box({
     parent: screen,
     bottom: 2,
@@ -314,7 +339,7 @@ right.key('d', () => {
     `{underline}${'key'.padEnd(16)}${'command'.padEnd(panel.width - 16)}{/}\n` +
     `${'D'.padStart(2).padEnd(16)}delete`
   )
-  panel.on('keypress', async (ch, key) => {
+  panel.on('keypress', async (__, key) => {
     if (key.name === 'd' && key.shift) {
       const _id = mongodb.ObjectID(STATE.docs[right.selected - 1]._id)
       if (await confirm(`Remove ${_id}?`)) {
@@ -334,7 +359,7 @@ right.key('d', () => {
   panel.focus()
   screen.render()
 })
-right.key(['y', 'a'], async (ch, key) => {
+right.key(['y', 'a'], async (__, key) => {
   let doc = {}, docNew, str = ''
 
   if (key.name === 'y') {
@@ -493,6 +518,7 @@ help._right = () => {
     [' d', 'remove'],
     [' [, ]', 'prev, next page'],
     [' -, +', 'sort({_id:-1}), sort({_id:1})'],
+    [' r, backspace', 'reload, reset'],
     [' /', 'search']
   ])
 }
@@ -506,7 +532,8 @@ help._textbox = () => {
     [' foo:bar,num:42', 'filter', 'find({foo: "bar", num: 42})'],
     [' foo,bar', 'projection', 'find({}, {foo: 1, bar: 1})'],
     [' -foo,+bar,-', 'sort', 'sort({foo: 1, bar: -1, _id: -1})'],
-    ['example'],
+    ['examples'],
+    [' db.users.find({login:"admin"},{login:1,age:1},{age:-1}})'],
     [' login:admin,login,age,-age']
   ])
 }
@@ -521,6 +548,7 @@ const bottom = blessed.box({
   right: 0,
   height: 1,
   align: 'right',
+  tags: true,
   style: {
     bg: THEME.bg2,
     fg: THEME.fg
@@ -528,7 +556,6 @@ const bottom = blessed.box({
 })
 bottom._.left = blessed.box({
   parent: bottom,
-  tags: true,
   style: {
     bg: THEME.bg2,
     fg: THEME.fg
@@ -663,32 +690,36 @@ const drawTop = () => {
 }
 
 const drawBottom = () => {
-  const contentCount = STATE.docsCount > 1 ?
-    `${STATE.skip + 1}-${Math.min(STATE.docsCount, STATE.skip + 100)}/` :
-    ''
-  const contentDocsCount = STATE.docsCount !== null ?
-    STATE.docsCount + ' ' :
-    ''
-  bottom.setContent(`${contentCount}${contentDocsCount}`)
-
-  const length = bottom.width - bottom.content.length - 1
   let content = ''
+  if (STATE.docsCount > 1) {
+    content += `${STATE.skip + 1}-${Math.min(STATE.docsCount, STATE.skip + 100)}/`
+  }
   if (STATE.docsCount !== null) {
-    content += ` db.${STATE.collection.s.namespace.collection}.find(`
-    content += `${lazy.stringify(STATE.criteria)}`
+    content += `${STATE.docsCount} `
+  }
+  let length = bottom.width - content.length
+
+  let contentLeft = ''
+  if (STATE.docsCount !== null) {
+    contentLeft += ` db.${STATE.collection.s.namespace.collection}.find(`
+    contentLeft += `${lazy.stringify(STATE.criteria)}`
     if (!_.isEmpty(STATE.projection)) {
-      content += `,${lazy.stringify(STATE.projection)}`
+      contentLeft += `,${lazy.stringify(STATE.projection)}`
     }
     if (!_.isEmpty(STATE.sort)) {
-      content += `).sort(${lazy.stringify(STATE.sort)}`
+      contentLeft += `).sort(${lazy.stringify(STATE.sort)}`
     }
-    content += ')'
-    if (content.length > length) {
-      content = `${content.substr(0, length - 1)}{gray-fg}~{/}`
+    contentLeft += ')'
+    if (contentLeft.length >= length) {
+      content = `{gray-fg}~{/} ${content}`
+      length -= 1
+      contentLeft = `${contentLeft.substr(0, length - 1)}`
     }
   }
-  bottom._.left.width = length
-  bottom._.left.setContent(content)
+
+  bottom.setContent(content)
+  bottom._.left.width = length - 1
+  bottom._.left.setText(contentLeft)
 }
 
 const drawDBs = async () => {
@@ -829,11 +860,11 @@ const drawDocuments = async (name, criteria = {}, projection = {}, sort = {}) =>
     header.splice(0, STATE.offset)
   }
 
+  right.width = '100%-17'
   right.setData([
     header,
     ...lazy.colorize(STATE.docs, header, {fg2: THEME.fg2})
   ])
-  right.width = '100%-17'
 }
 
 const init = async () => {
@@ -863,6 +894,13 @@ const init = async () => {
         localHost: '127.0.0.1',
         localPort: 37017
       }, (error, server) => {
+        if (error) {
+          if (screen._.loader) {
+            screen._.loader.destroy()
+          }
+          textbox.setValue(error.toString())
+          return
+        }
         server.on('error', (error) => {
           if (screen._.loader) {
             screen._.loader.destroy()

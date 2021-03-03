@@ -94,10 +94,10 @@ const lazy = module.exports = {
 
   splitByOuter: (splitter, input) => {
     const array = ['']
-    const levels = _.fromPairs(_.map('\'"([{', i => [i, 0]))
+    const levels = _.fromPairs(_.map('\'"/([{', i => [i, 0]))
     for (let i in input) {
       const char = input[i]
-      if (["'", '"'].includes(char)) {
+      if (["'", '"', '/'].includes(char)) {
         levels[char] = +!levels[char]
       } else if (['(', '[', '{'].includes(char)) {
         levels[char]++
@@ -157,7 +157,7 @@ const lazy = module.exports = {
   },
 
   stringify: (json, space) => {
-    return EJSON.stringify(json, (k, v) => {
+    return EJSON.stringify(json, (__, v) => {
       if (v) {
         if (v.$regularExpression) return {
           $regex:
@@ -171,7 +171,7 @@ const lazy = module.exports = {
       .replace(/\{\$regex:\"(.*?)\"\}/g, (...matches) => {
         return matches[1].replace(/\\\\/g, '\\')
       })
-      .replace(/\{\$regex:(.*?)\}/g, '$1')
+      .replace(/\{\$regex:(\/.*?\/)\}/g, '$1')
   },
 
   preview: (json, space) => {

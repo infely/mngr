@@ -59,7 +59,7 @@ module.exports = (screen, THEME) => {
       map = createMap()
     })
 
-    const stars = _.times(64, i => spawnStar())
+    const stars = _.times(64, () => spawnStar())
     let map = createMap()
     _.times(32, update)
     draw()

@@ -3,7 +3,7 @@
 module.exports = (options) => {
   const listtable = blessed.listtable(options)
 
-  listtable.on('keypress', (ch, key) => {
+  listtable.on('keypress', (__, key) => {
     if (key.name === 'k') {
       listtable.up()
       listtable.screen.render()
