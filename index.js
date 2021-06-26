@@ -7,6 +7,7 @@ program
   .option('-h, --host <ip|domain>', 'host')
   .option('-p, --port <port>', 'port')
   .option('-s, --ssh <user@host:port>', 'ssh tunnel')
+  .option('-u, --url <url>', 'connection url')
   .option('-c, --colors <bg,fg,bg2,fg2,bg3>', 'colors')
   .option('-v, --version', 'print version information and exit')
 program.parse(process.argv)
@@ -43,6 +44,7 @@ const ARGS          = program.parse(process.argv).args
 const HOST          = OPTIONS.host || 'localhost'
 const PORT          = OPTIONS.port || 27017
 const SSH           = OPTIONS.ssh
+const URL           = OPTIONS.url
 const COLORS        = OPTIONS.colors
 const THEME         = COLORS ?
   theme(...COLORS.split(',')) :
@@ -683,7 +685,7 @@ const focus = (index) => {
 const drawTop = () => {
   let str = ' '
   if (SSH) str += ` ${SSH} `
-  str += ` ${HOST}:27017 `
+  str += ` ${HOST}:${PORT} `
   if (STATE.db) str += ` ${STATE.db.s.namespace.db} `
   str += `{|}press {bold}?{/} for help `
   top.setContent(str)
@@ -919,7 +921,7 @@ const init = async () => {
 
   try {
     STATE.client = await mongodb.MongoClient
-      .connect(`mongodb://${HOST}:${!SSH ? PORT : 37017}`, {
+      .connect(URL || `mongodb://${!SSH ? HOST : '127.0.0.1'}:${!SSH ? PORT : 37017}`, {
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 3000,
       })

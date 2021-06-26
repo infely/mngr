@@ -1,3 +1,4 @@
+const path              = require('path')
 const webpack           = require('webpack')
 const nodeExternals     = require('webpack-node-externals')
 
@@ -9,6 +10,7 @@ module.exports = {
     app: './index.js',
   },
   output: {
+    path: path.resolve(__dirname, 'dist', 'npm'),
     filename: 'index.js',
   },
   module: {

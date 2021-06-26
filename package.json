@@ -1,12 +1,13 @@
 {
   "name": "mngr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command-line cross-platform MongoDB management TUI tool",
   "repository": "infely/mngr",
   "homepage": "https://github.com/infely/mngr",
   "main": "index.js",
   "scripts": {
-    "build": "npx pkg -t node12-linux,node12-macos,node12-win --out-path dist ."
+    "build": "npx webpack && cp {package.json,README.md} dist/npm",
+    "pkg": "npx pkg -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path dist/pkg ."
   },
   "bin": {
     "mngr": "index.js"
