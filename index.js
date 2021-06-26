@@ -13,8 +13,9 @@ program
 program.parse(process.argv)
 
 const OPTIONS = program.opts()
+const VERSION = require('./package.json').version
 if (OPTIONS.version) {
-  console.log(require('./package.json').version)
+  console.log(VERSION)
   process.exit(0)
 }
 
@@ -35,6 +36,8 @@ global.moment       = require('moment')
 global.mongodb      = require('mongodb')
 global.EJSON        = require('bson').EJSON
 global.blessed      = require('blessed')
+global.axios        = require('axios')
+global.semver       = require('semver')
 const tunnel        = require('tunnel-ssh')
 const ed            = require('./src/utils/ed')
 const lazy          = require('./src/utils/lazy')
@@ -968,6 +971,22 @@ const init = async () => {
         loading()
       }
     }, 100)
+  }
+
+  try {
+    const res = await axios.get(
+      'http://mngr.infely.xyz/version.json',
+      {
+        headers: {
+          'User-Agent': `mngr-${process.platform}/${VERSION}`
+        }
+      }
+    )
+    if (semver.gt(res.data.version, VERSION)) {
+      textbox.setValue(`Update available ${VERSION} → ${res.data.version}`)
+    }
+  } catch (e) {
+    // textbox.setValue(e.toString())
   }
 
   try {

@@ -1,13 +1,16 @@
 {
   "name": "mngr",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Command-line cross-platform MongoDB management TUI tool",
   "repository": "infely/mngr",
   "homepage": "https://github.com/infely/mngr",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack && cp {package.json,README.md} dist/npm",
-    "pkg": "npx pkg -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path dist/pkg ."
+    "build": "npm run npm && npm run pkg && npm run pkg_zip && npm run pkg_clean",
+    "npm": "npx webpack && cp {package.json,README.md} dist/npm",
+    "pkg": "npx pkg -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path dist/pkg .",
+    "pkg_zip": "cd dist/pkg && zip mngr-linux.zip mngr-linux && zip mngr-macos.zip mngr-macos && zip mngr-win.zip mngr-win.exe",
+    "pkg_clean": "rm dist/pkg/{mngr-linux,mngr-macos,mngr-win.exe}"
   },
   "bin": {
     "mngr": "index.js"
@@ -39,19 +42,21 @@
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "blessed": "^0.1.81",
-    "bson": "^4.2.2",
-    "commander": "^7.0.0",
-    "lodash": "^4.17.20",
+    "bson": "^4.4.0",
+    "commander": "^8.0.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "mongodb": "3.6.3",
+    "mongodb": "3.6.9",
+    "semver": "^6.3.0",
     "tunnel-ssh": "^4.1.4"
   },
   "devDependencies": {
-    "pkg": "^4.4.9",
+    "pkg": "^5.3.0",
     "shebang-loader": "^0.0.1",
-    "webpack-cli": "^4.5.0",
-    "webpack-node-externals": "^2.5.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "pkg": {
     "assets": "node_modules/blessed/usr/**/*"
