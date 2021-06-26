@@ -53,6 +53,7 @@ const THEME         = COLORS ?
       theme(0, 7)
 const HISTORY       = path.join(os.homedir(), '.mngr_history')
 const screen        = blessed.screen({smartCSR: true})
+const alert         = require('./src/widgets/alert')(screen, THEME)
 const confirm       = require('./src/widgets/confirm')(screen, THEME)
 const helptext      = require('./src/widgets/helptext')(THEME)
 const hyperjump     = require('./src/widgets/hyperjump')(screen, THEME)
@@ -67,6 +68,7 @@ const STATE = {
   collection: null,
   docsCount: null,
   docs: [],
+  selected: [],
   headerLast: [],
   criteria: {},
   projection: {},
@@ -343,16 +345,38 @@ right.key('d', () => {
   )
   panel.on('keypress', async (__, key) => {
     if (key.name === 'd' && key.shift) {
-      const _id = mongodb.ObjectID(STATE.docs[right.selected - 1]._id)
-      if (await confirm(`Remove ${_id}?`)) {
-        await STATE.collection.deleteOne({_id})
-        await drawDocuments(
-          STATE.collection.s.namespace.collection,
-          STATE.criteria,
-          STATE.projection,
-          STATE.sort
-        )
-        textbox.setValue(`${_id} deleted`)
+      if (STATE.selected.length) {
+        try {
+          let ids = _.map(STATE.selected, i => mongodb.ObjectID(STATE.docs[i]._id))
+          if (await confirm(`Remove ${ids.length} selected documents?`)) {
+            await STATE.collection.deleteMany({_id: {$in: ids}})
+            await drawDocuments(
+              STATE.collection.s.namespace.collection,
+              STATE.criteria,
+              STATE.projection,
+              STATE.sort
+            )
+            textbox.setValue(`${ids.length} documents deleted`)
+          }
+        } catch (e) {
+          textbox.setValue(e.toString())
+        }
+      } else {
+        try {
+          const _id = mongodb.ObjectID(STATE.docs[right.selected - 1]._id)
+          if (await confirm(`Remove ${_id}?`)) {
+            await STATE.collection.deleteOne({_id})
+            await drawDocuments(
+              STATE.collection.s.namespace.collection,
+              STATE.criteria,
+              STATE.projection,
+              STATE.sort
+            )
+            textbox.setValue(`${_id} deleted`)
+          }
+        } catch (e) {
+          textbox.setValue(e.toString())
+        }
       }
     }
     panel.destroy()
@@ -489,6 +513,22 @@ right.on('action', async () => {
     }
   }
   textbox.setValue(str)
+  screen.render()
+})
+right.key('space', () => {
+  let selected = right.selected
+  const index = STATE.selected.indexOf(selected - 1)
+  if (index == -1) {
+    STATE.selected.push(selected - 1)
+  } else {
+    STATE.selected.splice(index, 1)
+  }
+
+  if (selected < STATE.docsCount) {
+    selected += 1
+  }
+  drawDocuments()
+  right.selected = selected
   screen.render()
 })
 
@@ -828,6 +868,16 @@ const makeQuery = async (input) => {
   return {collection, criteria, projection, sort}
 }
 
+const selectedColorize = (data) => {
+  data = _.map(data, (i, k) => {
+    if (STATE.selected.includes(k)) {
+      i = _.map(i, j => `{bold}${j}`)
+    }
+    return i
+  })
+  return data
+}
+
 const drawDocuments = async (name, criteria = {}, projection = {}, sort = {}) => {
   if (name) {
     STATE.criteria = criteria
@@ -851,6 +901,7 @@ const drawDocuments = async (name, criteria = {}, projection = {}, sort = {}) =>
       .sort(STATE.sort)
       .skip(STATE.skip)
       .toArray()
+    STATE.selected = []
   }
 
   const header = ['_id', ..._.keys(STATE.projection)]
@@ -865,7 +916,7 @@ const drawDocuments = async (name, criteria = {}, projection = {}, sort = {}) =>
   right.width = '100%-17'
   right.setData([
     header,
-    ...lazy.colorize(STATE.docs, header, {fg2: THEME.fg2})
+    ...selectedColorize(lazy.colorize(STATE.docs, header, {fg2: THEME.fg2}))
   ])
 }
 
@@ -929,30 +980,12 @@ const init = async () => {
     if (screen._.loader) {
       screen._.loader.destroy()
     }
-    const message = blessed.message({
-      parent: screen,
-      top: 'center',
-      left: 'center',
-      height: 'shrink',
-      border: 'line',
-      style: {
-        bg: THEME.bg,
-        fg: THEME.fg,
-        border: {
-          bg: THEME.bg,
-          fg: THEME.fg,
-        }
-      }
-    })
     let content = `Error: couldn\'t connect to server ${HOST}:${PORT}`
     if (SSH) {
       content += ` via ${SSH}`
     }
-    message.width = content.length + 4
-    message.display(` ${content} `, 0, () => {
-      process.exit(0)
-    })
-    return
+    await alert(content)
+    process.exit(0)
   } finally {
     if (screen._.hyperjump) {
       screen._.hyperjump.destroy()

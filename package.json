@@ -1,6 +1,6 @@
 {
   "name": "mngr",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Command-line cross-platform MongoDB management TUI tool",
   "repository": "infely/mngr",
   "homepage": "https://github.com/infely/mngr",
