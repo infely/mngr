@@ -69,6 +69,7 @@ const STATE = {
   dbs: null,
   db: null,
   collection: null,
+  leftSearch: null,
   docsCount: null,
   docs: [],
   selected: [],
@@ -157,7 +158,8 @@ const left = blessed.list({
       left.focus()
       textbox.clearInput()
       if (value) {
-        cb(value.replace(/^\//, ''))
+        STATE.leftSearch = value.replace(/^\//, '')
+        cb(STATE.leftSearch)
       } else {
         screen.render()
       }
@@ -173,7 +175,11 @@ const left = blessed.list({
     }
   }
 })
-left.on('keypress', () => {
+left.on('keypress', (__, key) => {
+  if (key.name === 'n' && STATE.leftSearch) {
+    left.select(left.fuzzyFind(STATE.leftSearch, key.shift))
+  }
+
   STATE.docsCount = null
   drawBottom()
   right.width = '100%-17'
@@ -417,9 +423,11 @@ right.key(['y', 'a'], async (__, key) => {
 right.key(['h', 'left'], async () => {
   if (STATE.offset > 0) {
     STATE.offset--
+    const childBase = right.childBase
     const selected = right.selected
     await drawDocuments()
-    right.selected = selected
+    right.childBase = childBase
+    right.select(selected)
     screen.render()
   } else {
     focus(0)
@@ -427,9 +435,11 @@ right.key(['h', 'left'], async () => {
 })
 right.key(['l', 'right'], async () => {
   STATE.offset = Math.min(STATE.headerLast.length - 1, STATE.offset + 1)
+  const childBase = right.childBase
   const selected = right.selected
   await drawDocuments()
-  right.selected = selected
+  right.childBase = childBase
+  right.select(selected)
   screen.render()
 })
 right.key('/', () => {
@@ -519,6 +529,7 @@ right.on('action', async () => {
   screen.render()
 })
 right.key('space', () => {
+  let childBase = right.childBase
   let selected = right.selected
   const index = STATE.selected.indexOf(selected - 1)
   if (index == -1) {
@@ -527,11 +538,15 @@ right.key('space', () => {
     STATE.selected.splice(index, 1)
   }
 
+  if (right.selected - right.childBase >= right.height - 1) {
+    childBase += 1
+  }
   if (selected < STATE.docsCount) {
     selected += 1
   }
   drawDocuments()
-  right.selected = selected
+  right.childBase = childBase
+  right.select(selected)
   screen.render()
 })
 
@@ -973,20 +988,22 @@ const init = async () => {
     }, 100)
   }
 
-  try {
-    const res = await axios.get(
-      'http://mngr.infely.xyz/version.json',
-      {
-        headers: {
-          'User-Agent': `mngr-${process.platform}/${VERSION}`
+  if (process.env.MNGR_UPDATE !== '0') {
+    try {
+      const res = await axios.get(
+        'http://mngr.infely.xyz/version.json',
+        {
+          headers: {
+            'User-Agent': `mngr-${process.platform}/${VERSION}`
+          }
         }
+      )
+      if (semver.gt(res.data.version, VERSION)) {
+        textbox.setValue(`Update available ${VERSION} → ${res.data.version}`)
       }
-    )
-    if (semver.gt(res.data.version, VERSION)) {
-      textbox.setValue(`Update available ${VERSION} → ${res.data.version}`)
+    } catch (e) {
+      // textbox.setValue(e.toString())
     }
-  } catch (e) {
-    // textbox.setValue(e.toString())
   }
 
   try {
