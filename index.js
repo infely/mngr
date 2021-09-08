@@ -44,6 +44,15 @@ const lazy          = require('./src/utils/lazy')
 const theme         = require('./src/utils/theme')
 const LIMIT         = 100
 const ARGS          = program.parse(process.argv).args
+if (OPTIONS.ssh && OPTIONS.url) {
+  const urlRegex = /^(.*)@(.*):(\d{1,5})\/(.*)$/
+  const matches = OPTIONS.url.match(urlRegex)
+  if (matches) {
+    OPTIONS.host = matches[2]
+    OPTIONS.port = matches[3]
+    OPTIONS.url = OPTIONS.url.replace(urlRegex, '$1@localhost:37017/$4')
+  }
+}
 const HOST          = OPTIONS.host || 'localhost'
 const PORT          = OPTIONS.port || 27017
 const SSH           = OPTIONS.ssh
