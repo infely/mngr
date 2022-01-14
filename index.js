@@ -31,6 +31,7 @@ if (
 global.fs           = require('fs')
 global.path         = require('path')
 global.os           = require('os')
+global.urlParse     = require('url').parse
 global._            = require('lodash')
 global.moment       = require('moment')
 global.mongodb      = require('mongodb')
@@ -44,14 +45,10 @@ const lazy          = require('./src/utils/lazy')
 const theme         = require('./src/utils/theme')
 const LIMIT         = 100
 const ARGS          = program.parse(process.argv).args
-if (OPTIONS.ssh && OPTIONS.url) {
-  const urlRegex = /^(.*)@(.*):(\d{1,5})\/(.*)$/
-  const matches = OPTIONS.url.match(urlRegex)
-  if (matches) {
-    OPTIONS.host = matches[2]
-    OPTIONS.port = matches[3]
-    OPTIONS.url = OPTIONS.url.replace(urlRegex, '$1@localhost:37017/$4')
-  }
+if (OPTIONS.url) {
+  const { hostname: host, port } = urlParse(OPTIONS.url)
+  OPTIONS.host = host
+  OPTIONS.port = port
 }
 const HOST          = OPTIONS.host || 'localhost'
 const PORT          = OPTIONS.port || 27017
@@ -334,6 +331,7 @@ right.key('[', async () => {
     STATE.projection,
     STATE.sort
   )
+  screen.render()
 })
 right.key(']', async () => {
   if (STATE.skip + 100 > STATE.docsCount) {
@@ -346,6 +344,7 @@ right.key(']', async () => {
     STATE.projection,
     STATE.sort
   )
+  screen.render()
 })
 right.key('d', () => {
   if (!help.hidden) {
@@ -406,9 +405,13 @@ right.key('d', () => {
 right.key(['y', 'a'], async (__, key) => {
   let doc = {}, docNew, str = ''
 
-  if (key.name === 'y') {
-    doc = await STATE.collection.findOne(STATE.docs[right.selected - 1]._id)
-    delete doc._id
+  if (key.name === 'y' && STATE.docs[right.selected - 1]) {
+    try {
+      doc = await STATE.collection.findOne(STATE.docs[right.selected - 1]._id) || {}
+      delete doc._id
+    } catch (e) {
+      textbox.setValue(e.toString())
+    }
   }
   try {
     docNew = await ed(screen, doc)
@@ -416,15 +419,19 @@ right.key(['y', 'a'], async (__, key) => {
     docNew = undefined
   }
   if (docNew) {
-    const result = await STATE.collection.insertOne(docNew)
-    await drawDocuments(
-      STATE.collection.s.namespace.collection,
-      STATE.criteria,
-      STATE.projection,
-      STATE.sort
-    )
+    try {
+      const result = await STATE.collection.insertOne(docNew)
+      await drawDocuments(
+        STATE.collection.s.namespace.collection,
+        STATE.criteria,
+        STATE.projection,
+        STATE.sort
+      )
 
-    str = `${result.insertedId} written`
+      str = `${result.insertedId} written`
+    } catch (e) {
+      str = e.toString()
+    }
   }
   textbox.setValue(str)
   screen.render()
@@ -556,6 +563,51 @@ right.key('space', () => {
   drawDocuments()
   right.childBase = childBase
   right.select(selected)
+  screen.render()
+})
+right.key('v', () => {
+  let childBase = right.childBase
+  const selected = right.selected
+
+  STATE.selected = [...Array(right.rows.length - 1)].map(
+    (_i, index) => !STATE.selected.includes(index) ? index : undefined
+  ).filter(i => i !== undefined)
+
+  drawDocuments()
+  right.childBase = childBase
+  right.select(selected)
+  screen.render()
+})
+right.key('u', () => {
+  if (!help.hidden) {
+    help._hide()
+  }
+  const panel = blessed.box({
+    parent: screen,
+    bottom: 2,
+    height: 2,
+    tags: true
+  })
+  panel.setContent(
+    `{underline}${'key'.padEnd(16)}${'command'.padEnd(panel.width - 16)}{/}\n` +
+    `${'v'.padStart(2).padEnd(16)}unmark`
+  )
+  panel.on('keypress', async (__, key) => {
+    if (key.name === 'v') {
+      let childBase = right.childBase
+      const selected = right.selected
+
+      STATE.selected = []
+
+      drawDocuments()
+      right.childBase = childBase
+      right.select(selected)
+      screen.render()
+    }
+    panel.destroy()
+    screen.render()
+  })
+  panel.focus()
   screen.render()
 })
 
@@ -816,7 +868,7 @@ const drawCollections = async (name) => {
     )
   )
   left.setItems(['..', ...STATE.collections])
-  left.selected = 1
+  left.selected = Math.min(1, STATE.collections.length)
   drawTop()
 }
 
@@ -914,20 +966,30 @@ const drawDocuments = async (name, criteria = {}, projection = {}, sort = {}) =>
     const options = {limit: LIMIT}
 
     STATE.collection = STATE.db.collection(name)
-    STATE.docsCount = await STATE.collection
-      .find(STATE.criteria)
-      .skip(STATE.skip)
-      .count()
-    drawBottom()
+    try {
+      STATE.docsCount = await STATE.collection
+        .find(STATE.criteria)
+        .skip(STATE.skip)
+        .count()
+      drawBottom()
+    } catch (e) {
+      STATE.docsCount = 0
+      textbox.setValue(e.toString())
+    }
 
     if (projection) {
       options.projection = STATE.projection
     }
-    STATE.docs = await STATE.collection
-      .find(STATE.criteria, options)
-      .sort(STATE.sort)
-      .skip(STATE.skip)
-      .toArray()
+    try {
+      STATE.docs = await STATE.collection
+        .find(STATE.criteria, options)
+        .sort(STATE.sort)
+        .skip(STATE.skip)
+        .toArray()
+    } catch (e) {
+      STATE.docs = []
+      textbox.setValue(e.toString())
+    }
     STATE.selected = []
   }
 
@@ -971,7 +1033,7 @@ const init = async () => {
         port: matches[5] || 22,
         dstHost: HOST,
         dstPort: PORT,
-        localHost: '127.0.0.1',
+        localHost: 'localhost',
         localPort: 37017
       }, (error, server) => {
         if (error) {
@@ -1016,10 +1078,13 @@ const init = async () => {
   }
 
   try {
+    let url = URL || `mongodb://${HOST}:${PORT}`
+    if (SSH)
+      url = url.replace(`${HOST}:${PORT}`, 'localhost:37017')
     STATE.client = await mongodb.MongoClient
-      .connect(URL || `mongodb://${!SSH ? HOST : '127.0.0.1'}:${!SSH ? PORT : 37017}`, {
+      .connect(url, {
         useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 3000,
+        serverSelectionTimeoutMS: 5000,
       })
   } catch (e) {
     if (screen._.loader) {
