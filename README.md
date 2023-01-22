@@ -1,18 +1,23 @@
-# mngr: mongodb manager
+# mngr 2
 
-<p align="center"><img src="https://raw.githubusercontent.com/infely/mngr/master/img/mngr.gif" width="578" alt="mngr"></p>
+**mngr** (databases **m**a**n**a**g**e**r**) is a command-line cross-platform databases management TUI tool
 
-## About
+- Easy to use
+- Works with your `$EDITOR`
+- Has vim-like keybindings
 
-**mngr** (**m**o**ng**odb **m**a**n**a**g**e**r**) is a command-line cross-platform MongoDB management TUI tool. Created
-for MongoDB users and vim, tmux, ranger lovers :heart:
+![](media/demo.gif)
 
-## Features
+- Built with [react-curse](https://github.com/infely/react-curse). Created for vim, tmux lovers :heart:
 
-* Easy to use
-* Works in your favorite editor
-* Custom *lazy* query language
-* Vim-like keybindings
+## Supported databases
+
+- mongodb
+- mysql/mariadb
+- postgres
+- sqlite
+- json ([json-server](https://github.com/typicode/json-server) compatible)
+
 
 ## Install
 
@@ -25,3 +30,7 @@ npm i -g mngr
 ```bash
 mngr
 ```
+
+## Note
+
+mngr 1.0.8 (built with blessed) is deprecated but available for installation `npm i -g mngr@1.0.8`

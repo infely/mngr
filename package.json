@@ -1,64 +1,66 @@
 {
   "name": "mngr",
-  "version": "1.0.8",
-  "description": "Command-line cross-platform MongoDB management TUI tool",
-  "repository": "infely/mngr",
-  "homepage": "https://github.com/infely/mngr",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run npm && npm run pkg && npm run pkg_zip && npm run pkg_clean",
-    "npm": "npx webpack && cp {package.json,README.md} dist/npm",
-    "pkg": "npx pkg -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path dist/pkg .",
-    "pkg_zip": "cd dist/pkg && zip mngr-linux.zip mngr-linux && zip mngr-macos.zip mngr-macos && zip mngr-win.zip mngr-win.exe",
-    "pkg_clean": "rm dist/pkg/{mngr-linux,mngr-macos,mngr-win.exe}"
-  },
-  "bin": {
-    "mngr": "index.js"
-  },
+  "version": "2.0.3",
+  "description": "Command-line cross-platform databases management TUI tool",
   "keywords": [
+    "admin",
+    "ansi",
+    "ascii",
+    "cli",
+    "console",
+    "curses",
+    "gui",
+    "json",
+    "json-server",
+    "manager",
+    "mariadb",
     "mongo",
     "mongodb",
-    "cli",
-    "gui",
-    "tui",
-    "tool",
-    "manager",
-    "admin",
-    "terminal",
-    "term",
-    "console",
-    "ascii",
-    "unicode",
-    "blessed",
+    "mysql",
+    "ncurses",
+    "postgres",
+    "postgresdb",
+    "react",
+    "react-curse",
+    "renderer",
     "robo3t",
-    "vim",
+    "sqlite",
+    "term",
+    "terminal",
     "tmux",
-    "ranger"
+    "tool",
+    "tui",
+    "unicode",
+    "vim",
+    "xterm"
   ],
   "author": {
-    "name": "infely",
+    "name": "Oleksandr Vasyliev",
     "email": "infely@gmail.com",
     "url": "https://github.com/infely"
   },
+  "repository": "infely/mngr",
+  "homepage": "https://github.com/infely/mngr",
+  "main": "index.js",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "npx esbuild ${npm_config_src:=App.tsx} --outfile=.dist/index.js --bundle --platform=node --format=esm --external:'./node_modules/*' --sourcemap && node --enable-source-maps .dist",
+    "npm": "npx esbuild App.tsx --outfile=.npm/index.js --bundle --platform=node --format=esm --packages=external --define:'process.env.NODE_ENV=\"production\"' --minify --tree-shaking=true",
+    "postnpm": "bin/postnpm.js",
+    "dist": "npx esbuild App.tsx --outfile=.dist/index.cjs --bundle --platform=node --define:'process.env.NODE_ENV=\"production\"' --minify --tree-shaking=true",
+    "postdist": "bin/postdist.js && mv .dist/index.cjs ~/.bin/mngr"
+  },
   "dependencies": {
-    "axios": "^0.21.1",
-    "blessed": "^0.1.81",
-    "bson": "^4.4.0",
-    "commander": "^8.0.0",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "mongodb": "3.6.9",
-    "semver": "^6.3.0",
-    "tunnel-ssh": "^4.1.4"
+    "react-curse": "^1.0.6",
+    "mariadb": "^3.0.2",
+    "mongodb": "^4.13.0",
+    "pg": "^8.8.0",
+    "sqlite3": "^5.1.4"
   },
   "devDependencies": {
-    "pkg": "^5.3.0",
-    "shebang-loader": "^0.0.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "pkg": {
-    "assets": "node_modules/blessed/usr/**/*"
+    "@types/node": "^18.11.18",
+    "@types/pg": "^8.6.6",
+    "@types/react": "^18.0.27"
   }
 }
