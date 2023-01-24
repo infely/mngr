@@ -18,8 +18,13 @@
 - sqlite
 - json ([json-server](https://github.com/typicode/json-server) compatible)
 
+## Try
 
-## Install
+```bash
+npx mngr
+```
+
+## Installation
 
 ```bash
 npm i -g mngr

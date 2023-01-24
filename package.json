@@ -1,6 +1,6 @@
 {
   "name": "mngr",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Command-line cross-platform databases management TUI tool",
   "keywords": [
     "admin",
@@ -52,7 +52,7 @@
     "postdist": "bin/postdist.js && mv .dist/index.cjs ~/.bin/mngr"
   },
   "dependencies": {
-    "react-curse": "^1.0.6",
+    "react-curse": "^1.0.7",
     "mariadb": "^3.0.2",
     "mongodb": "^4.13.0",
     "pg": "^8.8.0",
