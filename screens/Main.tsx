@@ -127,7 +127,7 @@ export default () => {
     const [sql, count, rows, cols] = await db.rows(tables[table], o.where, o.order, o.skip, o.limit)
     dispatch('setCount', count)
     dispatch('setSql', sql)
-    if (cols) dispatch('setCols', cols)
+    dispatch('setCols', cols ?? (await db.cols(tables[table])))
     dispatch('setRows', rows)
 
     return rows
