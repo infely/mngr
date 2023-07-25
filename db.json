@@ -1,0 +1,3098 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "cat": "Simple",
+      "part": 1,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍇",
+          "word": "Grapes"
+        },
+        {
+          "emoji": "🍒",
+          "word": "Cherries"
+        },
+        {
+          "emoji": "🥥",
+          "word": "Coconut"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#81F9F1",
+        "#F58BFE"
+      ],
+      "color": "#9900CA",
+      "music": "1",
+      "isRendered": true
+    },
+    {
+      "id": 2,
+      "cat": "Simple",
+      "part": 2,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍓",
+          "word": "Strawberry"
+        },
+        {
+          "emoji": "🍑",
+          "word": "Peach"
+        },
+        {
+          "emoji": "🍍",
+          "word": "Pineapple"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F8B8FE",
+        "#84F981"
+      ],
+      "color": "#930C85",
+      "music": "2",
+      "isRendered": true
+    },
+    {
+      "id": 3,
+      "cat": "Simple",
+      "part": 3,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "👻",
+          "word": "Ghost"
+        },
+        {
+          "emoji": "🦜",
+          "word": "Parrot"
+        },
+        {
+          "emoji": "🍦",
+          "word": "Ice cream"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F6F981",
+        "#BE7BF2"
+      ],
+      "color": "#0B87CD",
+      "music": "3",
+      "isRendered": true
+    },
+    {
+      "id": 4,
+      "cat": "Simple",
+      "part": 4,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🎢",
+          "word": "Roller coaster"
+        },
+        {
+          "emoji": "🍄",
+          "word": "Mushroom"
+        },
+        {
+          "emoji": "🍈",
+          "word": "Melon"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#95FFFF",
+        "#F6F981"
+      ],
+      "color": "#1E6DE3",
+      "music": "1",
+      "isRendered": true
+    },
+    {
+      "id": 5,
+      "cat": "Simple",
+      "part": 5,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🪺",
+          "word": "Nest"
+        },
+        {
+          "emoji": "🌷",
+          "word": "Tulip"
+        },
+        {
+          "emoji": "🐝",
+          "word": "Honeybee"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#FFF48F",
+        "#F67B83"
+      ],
+      "color": "#D31186",
+      "music": "2",
+      "isRendered": true
+    },
+    {
+      "id": 6,
+      "cat": "Simple",
+      "part": 6,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🥕",
+          "word": "Carrot"
+        },
+        {
+          "emoji": "🍆",
+          "word": "Eggplant"
+        },
+        {
+          "emoji": "🧄",
+          "word": "Garlic"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#A7B5FF",
+        "#98FCC0"
+      ],
+      "color": "#036995",
+      "music": "3",
+      "isRendered": true
+    },
+    {
+      "id": 7,
+      "cat": "Simple",
+      "part": 7,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🧂",
+          "word": "Salt"
+        },
+        {
+          "emoji": "🦐",
+          "word": "Shrimp"
+        },
+        {
+          "emoji": "🏖",
+          "word": "Beach"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F9C0C0",
+        "#CFB8FF"
+      ],
+      "color": "#8057D7",
+      "music": "1",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 8,
+      "cat": "Simple",
+      "part": 8,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "⛲",
+          "word": "Fountain"
+        },
+        {
+          "emoji": "⌛",
+          "word": "Hourglass"
+        },
+        {
+          "emoji": "🧚",
+          "word": "Fairy"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F981B4",
+        "#E1FFC2"
+      ],
+      "color": "#0BA608",
+      "music": "2",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 9,
+      "cat": "Simple",
+      "part": 9,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🥟",
+          "word": "Dumpling"
+        },
+        {
+          "emoji": "🍩",
+          "word": "Doughnut"
+        },
+        {
+          "emoji": "🧋",
+          "word": "Bubble tea"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#BDF981",
+        "#BDF981"
+      ],
+      "color": "#0BA608",
+      "music": "3",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 10,
+      "cat": "Simple",
+      "part": 10,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🚲",
+          "word": "Bicycle"
+        },
+        {
+          "emoji": "⌚",
+          "word": "Watch"
+        },
+        {
+          "emoji": "🎈",
+          "word": "Balloon"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#B3B1FF",
+        "#FEFFC2"
+      ],
+      "color": "#4B48CE",
+      "music": "",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 11,
+      "cat": "Simple",
+      "part": 11,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "💌",
+          "word": "Letter"
+        },
+        {
+          "emoji": "👁",
+          "word": "Eye"
+        },
+        {
+          "emoji": "🐒",
+          "word": "Monkey"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#81F9F1",
+        "#F58BFE"
+      ],
+      "color": "#9900CA",
+      "music": "1",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 12,
+      "cat": "Simple",
+      "part": 12,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍊",
+          "word": "Orange"
+        },
+        {
+          "emoji": "🫐",
+          "word": "Blueberries"
+        },
+        {
+          "emoji": "🍐",
+          "word": "Pear"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F8B8FE",
+        "#84F981"
+      ],
+      "color": "#930C85",
+      "music": "2",
+      "slideDurationInFrames": "",
+      "isRendered": true
+    },
+    {
+      "id": 13,
+      "cat": "Simple",
+      "part": 13,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🦄",
+          "word": "Unicorn"
+        },
+        {
+          "emoji": "🦕",
+          "word": "Dinosaur"
+        },
+        {
+          "emoji": "🐚",
+          "word": "Shell"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F6F981",
+        "#BE7BF2"
+      ],
+      "color": "#0B87CD",
+      "slideDurationInFrames": "",
+      "music": "3",
+      "isRendered": true
+    },
+    {
+      "id": 14,
+      "cat": "Simple",
+      "part": 14,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🫖",
+          "word": "Teapot"
+        },
+        {
+          "emoji": "🧊",
+          "word": "Ice cube"
+        },
+        {
+          "emoji": "🧱",
+          "word": "Brick"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#95FFFF",
+        "#F6F981"
+      ],
+      "color": "#1E6DE3",
+      "slideDurationInFrames": "",
+      "music": "4",
+      "isRendered": true
+    },
+    {
+      "id": 15,
+      "cat": "Simple",
+      "part": 15,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🛞",
+          "word": "Wheel"
+        },
+        {
+          "emoji": "⚓",
+          "word": "Anchor"
+        },
+        {
+          "emoji": "🚀",
+          "word": "Rocket"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#FFF48F",
+        "#F67B83"
+      ],
+      "color": "#D31186",
+      "slideDurationInFrames": "",
+      "music": "5",
+      "isRendered": true
+    },
+    {
+      "id": 16,
+      "cat": "Simple",
+      "part": 16,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🥔",
+          "word": "Potato"
+        },
+        {
+          "emoji": "🧅",
+          "word": "Onion"
+        },
+        {
+          "emoji": "🌽",
+          "word": "Corn"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#A7B5FF",
+        "#98FCC0"
+      ],
+      "color": "#036995",
+      "slideDurationInFrames": "",
+      "music": "6",
+      "isRendered": true
+    },
+    {
+      "id": 17,
+      "cat": "Simple",
+      "part": 17,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "💺",
+          "word": "Seat"
+        },
+        {
+          "emoji": "🧳",
+          "word": "Luggage"
+        },
+        {
+          "emoji": "🛫",
+          "word": "Airplane"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F9C0C0",
+        "#CFB8FF"
+      ],
+      "color": "#8057D7",
+      "music": "1"
+    },
+    {
+      "id": 18,
+      "cat": "Simple",
+      "part": 18,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🛼",
+          "word": "Roller skate"
+        },
+        {
+          "emoji": "🫙",
+          "word": "Jar"
+        },
+        {
+          "emoji": "🥧",
+          "word": "Pie"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F981B4",
+        "#E1FFC2"
+      ],
+      "color": "#0BA608",
+      "music": "2"
+    },
+    {
+      "id": 19,
+      "cat": "Simple",
+      "part": 19,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍚",
+          "word": "Rice"
+        },
+        {
+          "emoji": "🦪",
+          "word": "Oyster"
+        },
+        {
+          "emoji": "🦑",
+          "word": "Squid"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#BDF981",
+        "#BDF981"
+      ],
+      "color": "#0BA608",
+      "music": "3"
+    },
+    {
+      "id": 20,
+      "cat": "Simple",
+      "part": 20,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍫",
+          "word": "Chocolate"
+        },
+        {
+          "emoji": "🎪",
+          "word": "Circus"
+        },
+        {
+          "emoji": "⛵",
+          "word": "Sailboat"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#B3B1FF",
+        "#FEFFC2"
+      ],
+      "color": "#4B48CE",
+      "music": "4"
+    },
+    {
+      "id": 21,
+      "cat": "Simple",
+      "part": 21,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍭",
+          "word": "Lollipop"
+        },
+        {
+          "emoji": "🍥",
+          "word": "Fish cake"
+        },
+        {
+          "emoji": "🌰",
+          "word": "Chestnut"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#81F9F1",
+        "#F58BFE"
+      ],
+      "color": "#9900CA",
+      "music": "5"
+    },
+    {
+      "id": 22,
+      "cat": "Simple",
+      "part": 22,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🍞",
+          "word": "Bread"
+        },
+        {
+          "emoji": "🍟",
+          "word": "Fries"
+        },
+        {
+          "emoji": "🥗",
+          "word": "Salad"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F8B8FE",
+        "#84F981"
+      ],
+      "color": "#930C85",
+      "music": "6"
+    },
+    {
+      "id": 23,
+      "cat": "Simple",
+      "part": 23,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "💻",
+          "word": "Laptop"
+        },
+        {
+          "emoji": "🔌",
+          "word": "Plug"
+        },
+        {
+          "emoji": "👑",
+          "word": "Crown"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F6F981",
+        "#BE7BF2"
+      ],
+      "color": "#0B87CD",
+      "music": "1"
+    },
+    {
+      "id": 24,
+      "cat": "Simple",
+      "part": 24,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🧈",
+          "word": "Butter"
+        },
+        {
+          "emoji": "🪵",
+          "word": "Wood"
+        },
+        {
+          "emoji": "🛝",
+          "word": "Slide"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#95FFFF",
+        "#F6F981"
+      ],
+      "color": "#1E6DE3",
+      "music": "2"
+    },
+    {
+      "id": 25,
+      "cat": "Simple",
+      "part": 25,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🌧",
+          "word": "Rain"
+        },
+        {
+          "emoji": "🌫",
+          "word": "Fog"
+        },
+        {
+          "emoji": "⚡",
+          "word": "Lightning"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#FFF48F",
+        "#F67B83"
+      ],
+      "color": "#D31186",
+      "music": "3"
+    },
+    {
+      "id": 26,
+      "cat": "Simple",
+      "part": 26,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🧨",
+          "word": "Firecracker"
+        },
+        {
+          "emoji": "🎁",
+          "word": "Gift"
+        },
+        {
+          "emoji": "🎾",
+          "word": "Tennis ball"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#A7B5FF",
+        "#98FCC0"
+      ],
+      "color": "#036995",
+      "music": "4"
+    },
+    {
+      "id": 27,
+      "cat": "Simple",
+      "part": 27,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🤿",
+          "word": "Diving mask"
+        },
+        {
+          "emoji": "🧸",
+          "word": "Teddy bear"
+        },
+        {
+          "emoji": "🪡",
+          "word": "Needle"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F9C0C0",
+        "#CFB8FF"
+      ],
+      "color": "#8057D7",
+      "music": "5"
+    },
+    {
+      "id": 28,
+      "cat": "Simple",
+      "part": 28,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🕶",
+          "word": "Sunglasses"
+        },
+        {
+          "emoji": "🎧",
+          "word": "Headphone"
+        },
+        {
+          "emoji": "🥁",
+          "word": "Drum"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#F981B4",
+        "#E1FFC2"
+      ],
+      "color": "#0BA608",
+      "music": "6"
+    },
+    {
+      "id": 29,
+      "cat": "Simple",
+      "part": 29,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🔍",
+          "word": "Magnifying glass"
+        },
+        {
+          "emoji": "🕯",
+          "word": "Candle"
+        },
+        {
+          "emoji": "🗞",
+          "word": "Newspaper"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#BDF981",
+        "#BDF981"
+      ],
+      "color": "#0BA608",
+      "music": "1"
+    },
+    {
+      "id": 30,
+      "cat": "Simple",
+      "part": 30,
+      "intro": "✨ Name the Emoji ✨",
+      "slides": [
+        {
+          "emoji": "🖍",
+          "word": "Crayon"
+        },
+        {
+          "emoji": "📁",
+          "word": "Folder"
+        },
+        {
+          "emoji": "📌",
+          "word": "Pin"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#B3B1FF",
+        "#FEFFC2"
+      ],
+      "color": "#4B48CE",
+      "music": "2"
+    },
+    {
+      "id": 31,
+      "cat": "List",
+      "part": 1,
+      "intro": "Colorful emojis",
+      "title": "Рink",
+      "slides": [
+        {
+          "emoji": "👛",
+          "word": "Purse"
+        },
+        {
+          "emoji": "👚",
+          "word": "T-shirt"
+        },
+        {
+          "emoji": "🎀",
+          "word": "Bow"
+        },
+        {
+          "emoji": "🌷",
+          "word": "Tulip"
+        },
+        {
+          "emoji": "🐙",
+          "word": "Octopus"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#FFF9C2",
+        "#F67BDB"
+      ],
+      "color": "#EA14BB",
+      "music": "4",
+      "isRendered": true
+    },
+    {
+      "id": 32,
+      "cat": "List",
+      "part": 2,
+      "intro": "Смайли по кольорам",
+      "title": "Yellow",
+      "slides": [
+        {
+          "emoji": "🟨",
+          "word": "Square"
+        },
+        {
+          "emoji": "🐥",
+          "word": "Chick"
+        },
+        {
+          "emoji": "🧽",
+          "word": "Sponge"
+        },
+        {
+          "emoji": "🌻",
+          "word": "Sunflower"
+        },
+        {
+          "emoji": "🌙",
+          "word": "Crescent moon"
+        }
+      ],
+      "outro": "Цікаво ще?\nПідпишись!",
+      "bg": [
+        "#E7FFE3",
+        "#E9FB1F"
+      ],
+      "color": "#FFC804",
+      "music": "5"
+    },
+    {
+      "id": 33,
+      "cat": "List",
+      "part": 3,
+      "intro": "Смайли по кольорам",
+      "title": "Blue",
+      "slides": [
+        {
+          "emoji": "🗺",
+          "word": "Map"
+        },
+        {
+          "emoji": "🧊",
+          "word": "Ice cube"
+        },
+        {
+          "emoji": "🫐",
+          "word": "Blueberries"
+        },
+        {
+          "emoji": "🐋",
+          "word": "Whale"
+        },
+        {
+          "emoji": "💎",
+          "word": "Gem stone"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#FCE9FF",
+        "#1FD3FB"
+      ],
+      "color": "#04A5FF",
+      "music": "6"
+    },
+    {
+      "id": 34,
+      "cat": "List",
+      "part": 4,
+      "intro": "Смайли по кольорам",
+      "title": "White",
+      "slides": [
+        {
+          "emoji": "🦢",
+          "word": "Swan"
+        },
+        {
+          "emoji": "🗒",
+          "word": "Notepad"
+        },
+        {
+          "emoji": "🐁",
+          "word": "Mouse"
+        },
+        {
+          "emoji": "📎",
+          "word": "Paperclip"
+        },
+        {
+          "emoji": "🩹",
+          "word": "Bandage"
+        }
+      ],
+      "outro": "Хочеш ще? Підпишись!",
+      "bg": [
+        "#E5F8F6",
+        "#E3DDFB"
+      ],
+      "color": "#A5B0B7",
+      "music": "1"
+    },
+    {
+      "id": 35,
+      "cat": "List",
+      "part": 5,
+      "intro": "Смайли по кольорам",
+      "title": "Purple",
+      "slides": [
+        {
+          "emoji": "🍆",
+          "word": "Eggplant"
+        },
+        {
+          "emoji": "🌂",
+          "word": "Umbrella"
+        },
+        {
+          "emoji": "🟣",
+          "word": "Circle"
+        },
+        {
+          "emoji": "🦄",
+          "word": "Unicorn"
+        },
+        {
+          "emoji": "🔮",
+          "word": "Crystal ball"
+        }
+      ],
+      "outro": "Цікаво ще? Підпишись!",
+      "bg": [
+        "#FFEBD9",
+        "#C76CFF"
+      ],
+      "color": "#892EC0",
+      "music": "2"
+    },
+    {
+      "id": 36,
+      "cat": "List",
+      "part": 6,
+      "intro": "Смайли по кольорам",
+      "title": "Red",
+      "slides": [
+        {
+          "emoji": "🍿",
+          "word": "Pop corn"
+        },
+        {
+          "emoji": "🌹",
+          "word": "Rose"
+        },
+        {
+          "emoji": "🍅",
+          "word": "Tomato"
+        },
+        {
+          "emoji": "🌶",
+          "word": "Hot pepper"
+        },
+        {
+          "emoji": "🐞",
+          "word": "Lady beetle"
+        }
+      ],
+      "outro": "Хочеш ще? Підпишись!",
+      "bg": [
+        "#FFF2E3",
+        "#FB3939"
+      ],
+      "color": "#C02E2E",
+      "music": "3"
+    },
+    {
+      "id": 37,
+      "cat": "List",
+      "part": 7,
+      "intro": "Смайли по кольорам",
+      "title": "Orange",
+      "slides": [
+        {
+          "emoji": "🔥",
+          "word": "Fire"
+        },
+        {
+          "emoji": "⛺",
+          "word": "Tent"
+        },
+        {
+          "emoji": "🌅",
+          "word": "Sunrise"
+        },
+        {
+          "emoji": "🎃",
+          "word": "Pumpkin"
+        },
+        {
+          "emoji": "🏆",
+          "word": "Trophy"
+        }
+      ],
+      "outro": "Хочеш ще? Підпишись!",
+      "bg": [
+        "#FFE3FC",
+        "#FBB01F"
+      ],
+      "color": "#ED7200",
+      "music": "4"
+    },
+    {
+      "id": 38,
+      "cat": "List",
+      "part": 8,
+      "intro": "Смайли по кольорам",
+      "title": "Green",
+      "slides": [
+        {
+          "emoji": "💚",
+          "word": "Heart"
+        },
+        {
+          "emoji": "🌵",
+          "word": "Cactus"
+        },
+        {
+          "emoji": "🐊",
+          "word": "Crocodile"
+        },
+        {
+          "emoji": "🦚",
+          "word": "Peacock"
+        },
+        {
+          "emoji": "🪲",
+          "word": "Beetle"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#E5F7FF",
+        "#38FF26"
+      ],
+      "color": "#1E790F",
+      "music": "5"
+    },
+    {
+      "id": 39,
+      "cat": "Drop",
+      "part": 1,
+      "intro": "Chose correct option",
+      "slides": [
+        {
+          "emoji": "🦢",
+          "word": "Swan"
+        },
+        {
+          "emoji": "🐶"
+        },
+        {
+          "emoji": "🚪"
+        },
+        {
+          "emoji": "🦤"
+        }
+      ],
+      "outro": "✨ Like ✨\nSubscribe",
+      "bg": [
+        "#81F9F1",
+        "#F58BFE"
+      ],
+      "color": "#9900CA",
+      "music": "4",
+      "isRendered": true
+    },
+    {
+      "id": 40,
+      "cat": "Drop",
+      "part": 2,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🍑",
+          "word": "Peach"
+        },
+        {
+          "emoji": "🍐"
+        },
+        {
+          "emoji": "🤏"
+        },
+        {
+          "emoji": "🔈"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#F8B8FE",
+        "#84F981"
+      ],
+      "color": "#930C85",
+      "music": "5"
+    },
+    {
+      "id": 41,
+      "cat": "Drop",
+      "part": 3,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "💼",
+          "word": "Briefcase"
+        },
+        {
+          "emoji": "📁"
+        },
+        {
+          "emoji": "🤿"
+        },
+        {
+          "emoji": "🧵"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#F6F981",
+        "#BE7BF2"
+      ],
+      "color": "#0B87CD",
+      "music": "6"
+    },
+    {
+      "id": 42,
+      "cat": "Drop",
+      "part": 4,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🧢",
+          "word": "Billed cap"
+        },
+        {
+          "emoji": "🏷"
+        },
+        {
+          "emoji": "💵"
+        },
+        {
+          "emoji": "🗄"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#95FFFF",
+        "#F6F981"
+      ],
+      "color": "#1E6DE3",
+      "music": "1"
+    },
+    {
+      "id": 43,
+      "cat": "Drop",
+      "part": 5,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🧮",
+          "word": "Abacus"
+        },
+        {
+          "emoji": "🪕"
+        },
+        {
+          "emoji": "🌺"
+        },
+        {
+          "emoji": "📐"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#FFF48F",
+        "#F67B83"
+      ],
+      "color": "#D31186",
+      "music": "2"
+    },
+    {
+      "id": 44,
+      "cat": "Drop",
+      "part": 6,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🪜",
+          "word": "Ladder"
+        },
+        {
+          "emoji": "🪟"
+        },
+        {
+          "emoji": "🪣"
+        },
+        {
+          "emoji": "🗡"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#A7B5FF",
+        "#98FCC0"
+      ],
+      "color": "#036995",
+      "music": "3"
+    },
+    {
+      "id": 45,
+      "cat": "Drop",
+      "part": 7,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🪛",
+          "word": "Screwdriver"
+        },
+        {
+          "emoji": "🚿"
+        },
+        {
+          "emoji": "🪠"
+        },
+        {
+          "emoji": "🎚"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#F9C0C0",
+        "#CFB8FF"
+      ],
+      "color": "#8057D7",
+      "music": "4"
+    },
+    {
+      "id": 46,
+      "cat": "Drop",
+      "part": 8,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🪣",
+          "word": "Bucket"
+        },
+        {
+          "emoji": "🗿"
+        },
+        {
+          "emoji": "💐"
+        },
+        {
+          "emoji": "🫙"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#F981B4",
+        "#E1FFC2"
+      ],
+      "color": "#CF0070",
+      "music": "5"
+    },
+    {
+      "id": 47,
+      "cat": "Drop",
+      "part": 9,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🧺",
+          "word": "Basket"
+        },
+        {
+          "emoji": "🪣"
+        },
+        {
+          "emoji": "🛒"
+        },
+        {
+          "emoji": "👜"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#BDF981",
+        "#BDF981"
+      ],
+      "color": "#0BA608",
+      "music": "6"
+    },
+    {
+      "id": 48,
+      "cat": "Drop",
+      "part": 10,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🧵",
+          "word": "Thread"
+        },
+        {
+          "emoji": "🥅"
+        },
+        {
+          "emoji": "🚡"
+        },
+        {
+          "emoji": "🍞"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#B3B1FF",
+        "#FEFFC2"
+      ],
+      "color": "#4B48CE",
+      "music": "1"
+    },
+    {
+      "id": 49,
+      "cat": "Drop",
+      "part": 11,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🥯",
+          "word": "Bagel"
+        },
+        {
+          "emoji": "🍡"
+        },
+        {
+          "emoji": "🍮"
+        },
+        {
+          "emoji": "🍹"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#81F9F1",
+        "#F58BFE"
+      ],
+      "color": "#9900CA",
+      "music": "2"
+    },
+    {
+      "id": 50,
+      "cat": "Drop",
+      "part": 12,
+      "intro": "Обери вірний варіант",
+      "slides": [
+        {
+          "emoji": "🥢",
+          "word": "Chopsticks"
+        },
+        {
+          "emoji": "🏗"
+        },
+        {
+          "emoji": "🚧"
+        },
+        {
+          "emoji": "🎭"
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#F8B8FE",
+        "#84F981"
+      ],
+      "color": "#930C85",
+      "music": "3"
+    },
+    {
+      "id": 51,
+      "part": 1,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись на канал 😘",
+      "level": 2,
+      "slides": [
+        {
+          "q": "Сдача",
+          "a": "Решта"
+        },
+        {
+          "q": "Смородіна",
+          "a": "Порічка"
+        },
+        {
+          "q": "Гололєд",
+          "a": "Ожеледиця"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "1",
+      "slideDurationInFrames": 420,
+      "isRendered": true
+    },
+    {
+      "id": 52,
+      "part": 2,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись! 🙏 Дякую! 👍",
+      "level": 3,
+      "slides": [
+        {
+          "q": "Собитіє",
+          "a": "Подія"
+        },
+        {
+          "q": "Помєха",
+          "a": "Перешкода"
+        },
+        {
+          "q": "Воврємя",
+          "a": "Вчасно"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "2",
+      "slideDurationInFrames": 412,
+      "isRendered": true
+    },
+    {
+      "id": 53,
+      "part": 3,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🌷",
+      "level": 4,
+      "slides": [
+        {
+          "q": "Камиш",
+          "a": "Очерет"
+        },
+        {
+          "q": "Бархатци",
+          "a": "Чорнобривці"
+        },
+        {
+          "q": "Сірєнь",
+          "a": "Бузок"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "3",
+      "slideDurationInFrames": 485,
+      "isRendered": true
+    },
+    {
+      "id": 54,
+      "part": 4,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Не підписуйтесь!!!",
+      "level": 3,
+      "slides": [
+        {
+          "q": "Воєнкомат",
+          "a": "Військкомат"
+        },
+        {
+          "q": "Мєдосмотр",
+          "a": "Медогляд"
+        },
+        {
+          "q": "Отсрочка",
+          "a": "Відтермінування"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "4",
+      "slideDurationInFrames": 291,
+      "isRendered": true
+    },
+    {
+      "id": 55,
+      "part": 5,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись?",
+      "level": 2,
+      "slides": [
+        {
+          "q": "Ковьор",
+          "a": "Килим"
+        },
+        {
+          "q": "Прійомнік",
+          "a": "Радіоприймач"
+        },
+        {
+          "q": "Вєлосіпєд",
+          "a": "Ровер"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "isRendered": true
+    },
+    {
+      "id": 56,
+      "part": 6,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 👵",
+      "level": 3,
+      "slides": [
+        {
+          "q": "Занавєскі",
+          "a": "Фіранки"
+        },
+        {
+          "q": "Вєси",
+          "a": "Ваги"
+        },
+        {
+          "q": "Конхфєти",
+          "a": "Цукерки"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "isRendered": true
+    },
+    {
+      "id": 57,
+      "part": 7,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🐶",
+      "level": 4,
+      "slides": [
+        {
+          "q": "Овощі",
+          "a": "Городина"
+        },
+        {
+          "q": "Скули",
+          "a": "Вилиці"
+        },
+        {
+          "q": "Нужда",
+          "a": "Потреба"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "6",
+      "slideDurationInFrames": 454,
+      "isRendered": true
+    },
+    {
+      "id": 58,
+      "part": 8,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🍆",
+      "level": 2,
+      "slides": [
+        {
+          "q": "Свєкла",
+          "a": "Буряк"
+        },
+        {
+          "q": "Похлебка",
+          "a": "Юшка"
+        },
+        {
+          "q": "Шампіньон",
+          "a": "Печериця"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "7",
+      "slideDurationInFrames": 492,
+      "isRendered": true
+    },
+    {
+      "id": 59,
+      "part": 9,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись ☎️",
+      "level": 1,
+      "slides": [
+        {
+          "q": "Площадка",
+          "a": "Майданчик"
+        },
+        {
+          "q": "Жвачка",
+          "a": "Жуйка"
+        },
+        {
+          "q": "Ларьок",
+          "a": "Kiоcк"
+        }
+      ],
+      "outro": "Слава Україні!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Криша",
+          "a": "Дах"
+        },
+        {
+          "q": "Кісточка",
+          "a": "Пензлик"
+        },
+        {
+          "q": "Полотєнце",
+          "a": "Рушник"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "8",
+      "slideDurationInFrames": 488,
+      "createdAt": 1683880864412,
+      "id": 60,
+      "part": 10,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись ✏️",
+      "level": 2,
+      "outro": "Слава Україні!",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Напіток",
+          "a": "Напій"
+        },
+        {
+          "q": "Пльонка",
+          "a": "Плівка"
+        },
+        {
+          "q": "Ожерєл’є",
+          "a": "Намисто"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "createdAt": 1683907991045,
+      "id": 61,
+      "part": 11,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись ☎️",
+      "level": 3,
+      "outro": "Скільки вгадав?",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Голубий",
+          "a": "Блакитний"
+        },
+        {
+          "q": "Піроженоє",
+          "a": "Тістечко"
+        },
+        {
+          "q": "Касаниіє",
+          "a": "Дотик"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "10",
+      "slideDurationInFrames": 474,
+      "createdAt": 1683967192867,
+      "id": 62,
+      "part": 12,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись! 🍪",
+      "level": 2,
+      "outro": "Скільки вгадав?",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Часи",
+          "a": "Годинник"
+        },
+        {
+          "q": "Бабочка",
+          "a": "Метелик"
+        },
+        {
+          "q": "Сємєчкі",
+          "a": "Насіння"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "createdAt": 1683977243150,
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🦋",
+      "level": 2,
+      "outro": "Скільки вгадав?",
+      "id": 63,
+      "part": 13,
+      "cat": "Slides",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Фасоль",
+          "a": "Квасоля"
+        },
+        {
+          "q": "Залівне",
+          "a": "Холодець"
+        },
+        {
+          "q": "Лук",
+          "a": "Цибуля"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "11",
+      "slideDurationInFrames": 436,
+      "createdAt": 1683977376941,
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🧅",
+      "level": 2,
+      "outro": "Скільки вгадав?",
+      "id": 64,
+      "part": 14,
+      "cat": "Slides",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Карандаш",
+          "a": "Олівець"
+        },
+        {
+          "q": "Звьозди",
+          "a": "Зорі"
+        },
+        {
+          "q": "Пєчєньє",
+          "a": "Печиво"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "5",
+      "slideDurationInFrames": 438,
+      "createdAt": 1683977542225,
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🌌",
+      "level": 2,
+      "outro": "Скільки вгадав?",
+      "id": 65,
+      "part": 15,
+      "cat": "Slides",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Достопрімєчатєльность",
+          "a": "Визначне місце"
+        },
+        {
+          "q": "Почкі",
+          "a": "Бруньки"
+        },
+        {
+          "q": "Мєлочь",
+          "a": "Дрібняки"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "12",
+      "slideDurationInFrames": 466,
+      "createdAt": 1683977807376,
+      "intro": "Тест на Українця",
+      "subtitle": "Підпишись 🧭",
+      "level": 3,
+      "outro": "Скільки вгадав?",
+      "id": 66,
+      "part": 16,
+      "cat": "Slides",
+      "isRendered": true
+    },
+    {
+      "id": 67,
+      "part": 1,
+      "cat": "Symbols",
+      "intro": "Вгадай символ",
+      "subtitle": "Нова рубрика!",
+      "level": 3,
+      "slides": [
+        {
+          "title": "Сонях",
+          "hint": "Повертається убік сонця, це явище називається «геліотропізм».",
+          "description": "Соняшник - символ сонячної енергії, життя, здоров'я та процвітання.\nВперше з`явився в Україні понад 250 років тому.\nHайбільший соняшник в Україні виріс висотою 4 метри 17 см."
+        },
+        {
+          "title": "Бандура",
+          "hint": "Наступник Кобзи",
+          "description": "Один із найдавніших українських народних інструментів.\nПерше письмове свідчення про появу бандури на землях України датується 1580 роком."
+        },
+        {
+          "title": "Кавун",
+          "hint": "Буває жовтим, рожевим, червоним і зеленим.",
+          "description": "3 серпня в Україні відзначають День кавуна.\nНа Херсонщині встановлено 2 пам’ятника кавуну.\nНа території України з’явились у ХІІI ст."
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "1",
+      "slideDurationInFrames": 650,
+      "isRendered": true
+    },
+    {
+      "id": 68,
+      "part": 2,
+      "cat": "Symbols",
+      "intro": "Вгадай символ",
+      "subtitle": "Нова рубрика!",
+      "level": 4,
+      "slides": [
+        {
+          "title": "Писанка",
+          "hint": "Святковий символ вічного життя",
+          "description": "Писанка - це оберіг, одна із найстарших форм українського народнього мистецтва.\nНа території Київської Русі знахідки датуються XI—XIII ст., у Східному Криму IV ст. до н.е."
+        },
+        {
+          "title": "Лелека",
+          "hint": "Символ сімейного благополуччя та вірності. Коли один із пари помирає, то інший йде свідомо на вірну загибель.",
+          "description": "Може зватися чорногуз, бусол. Слов'яни вірили, що лелеки восени відлітають у вирій - міфічну теплу \"країну вічної весни і вічного світла\", а навесні повертаються і приносять душі майбутніх дітей."
+        },
+        {
+          "title": "Дідух",
+          "hint": "Різдвяна прикраса. Символ родинного предка, господаря.",
+          "description": "Перший житній, пшеничний або вівсяний сніп, який з почестями забирали з поля під час зажинок чи обжинок."
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "2",
+      "slideDurationInFrames": 638,
+      "isRendered": true
+    },
+    {
+      "id": 69,
+      "part": 3,
+      "cat": "Symbols",
+      "intro": "Вгадай символ",
+      "subtitle": "Нова рубрика!",
+      "level": 4,
+      "slides": [
+        {
+          "title": "Рушник",
+          "hint": "Оберіг родини. Передавався із роду в рід.",
+          "description": "Символ злагоди, подружньої вірності, працьовитості, надії, прощання, гостинності.\nОбрядовий рушник мав ширину полотна близько 40 сантиметрів, довжину до 5 метрів."
+        },
+        {
+          "title": "Калина",
+          "hint": "Кісточки цієї рослини мають форму серця.",
+          "description": "Символізує мужність і незламність духу в боротьбі за незалежність рідного краю.\nСоком калини фарбували бавовну."
+        },
+        {
+          "title": "Монумент незалежності",
+          "hint": "Берегиня Свободи.",
+          "description": "Тріумфальна колона в Києві, присвячена незалежності України.\nВисота монументу - 61 метр."
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "3",
+      "slideDurationInFrames": 686,
+      "isRendered": true
+    },
+    {
+      "id": 70,
+      "part": 4,
+      "cat": "Symbols",
+      "intro": "Вгадай символ",
+      "subtitle": "Нова рубрика!",
+      "level": 4,
+      "slides": [
+        {
+          "title": "Верба",
+          "hint": "Улюблене дерево Мавок.",
+          "description": "Жіночий символ Дерева Життя.\nВербу вважали прадеревом життя, а Чумацький шлях її відображенням на зоряному небі."
+        },
+        {
+          "title": "Барвінок",
+          "hint": "З нього сплітали весільні вінки.",
+          "description": "Символ кохання і радісної життєвої сили.\nУособлює красу України, духовну міць народу, засвідчуює любов до рідної землі."
+        },
+        {
+          "title": "Львівський театр опери та балету",
+          "hint": "Зображений на 20-гривневій банкноті.",
+          "description": "Відкрився 4 жовтня 1900 р.\nОздоблений скульптурами «Комедія і драма», «Музика» і «Слава» з пальмовою гілкою піднятою над головою."
+        }
+      ],
+      "outro": "Хочеш ще?\nПідпишись!",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "6",
+      "slideDurationInFrames": 640,
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "title": "Жито",
+          "hint": "Це обрядова, культова рослина.",
+          "description": "Символ добробуту і злагоди в сім`ї, благополуччя та довгого життя на цій землі."
+        },
+        {
+          "title": "Трембіта",
+          "hint": "Споконвіку була єдиним засобом зв'язку чабана з селом.",
+          "description": "Народний духовий музичний інструмент.\nМає довжину від 2,5 до 8 метрів.\nВік дерева з якої роблять трембіту повинен бути 120-150 років"
+        },
+        {
+          "title": "Біла хата",
+          "hint": "Побудована з каменю звалась «кам'яниця», з глини - «мазанка»",
+          "description": "Cимвол рідної землі, Батьківщини, свого роду."
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "9",
+      "slideDurationInFrames": 502,
+      "createdAt": 1683897587084,
+      "id": 71,
+      "part": 5,
+      "cat": "Symbols",
+      "intro": "Вгадай символ",
+      "subtitle": "Нова рубрика!",
+      "level": 2,
+      "outro": "Хочеш ще?\nПідпишись!",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "title": "Тополя",
+          "hint": "Дерева, що живуть по 120 - 150 років.",
+          "description": "Символ рідної землі, свободи, дівочої краси, стрункості.\nМіфічний образ перетворення дівчини в дерево."
+        },
+        {
+          "title": "Паляниця",
+          "hint": "Слово, яке виявляє людей, українська мова для яких не є рідною.",
+          "description": "Символізує щастя і благополуччя госпо́ди, гостинність і безпеку."
+        },
+        {
+          "title": "Соловейко",
+          "hint": "Птах, що важить 13 - 32 г.",
+          "description": "Символ весни і волі, високого натхнення і неперевершеного таланту."
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "8",
+      "slideDurationInFrames": 466,
+      "createdAt": 1683979652707,
+      "intro": "Вгадай символ",
+      "subtitle": "Підпишись 🐦‍⬛",
+      "level": 1,
+      "outro": "Хочеш ще?\nПідпишись!",
+      "id": 72,
+      "part": 6,
+      "cat": "Symbols",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "title": "Луцький замок",
+          "hint": "Зображений на 200-гривневій банкноті.",
+          "description": "Заснован у 1340 р.\nПам'ятка архітектури та історії національного значення."
+        },
+        {
+          "title": "Тин",
+          "hint": "Огорожа, сплетена з лози, тонкого гілля.",
+          "description": "Оберіг двору, дому і всього господарства-обійстя від лихих сил та всякої напасті."
+        },
+        {
+          "title": "Мальва",
+          "hint": "По традиції цими квітами прикрашають своє подвір’я.",
+          "description": "Символ домашнього затишку, родинної злагоди, батьківської хати."
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "9",
+      "slideDurationInFrames": 502,
+      "createdAt": 1683979902269,
+      "intro": "Вгадай символ",
+      "subtitle": "Підпишись 🏰",
+      "level": 5,
+      "outro": "Хочеш ще?\nПідпишись!",
+      "id": 73,
+      "part": 7,
+      "cat": "Symbols",
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "q": "Очєрєдь",
+          "a": "Черга"
+        },
+        {
+          "q": "Обувь",
+          "a": "Взуття"
+        },
+        {
+          "q": "Ад",
+          "a": "Пекло"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "3",
+      "slideDurationInFrames": 485,
+      "createdAt": 1684143235705,
+      "part": 17,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 👟",
+      "level": 2,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 74
+    },
+    {
+      "slides": [
+        {
+          "q": "Обіда",
+          "a": "Образа"
+        },
+        {
+          "q": "Путь",
+          "a": "Колія"
+        },
+        {
+          "q": "Воротнік",
+          "a": "Комірець"
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "8",
+      "slideDurationInFrames": 488,
+      "createdAt": 1684143418841,
+      "part": 18,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🚂",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 75
+    },
+    {
+      "part": 19,
+      "cat": "Slides",
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🎙️",
+      "level": 2,
+      "slides": [
+        {
+          "q": "Забор",
+          "a": "Паркан"
+        },
+        {
+          "q": "Общєніе",
+          "a": "Спілкування"
+        },
+        {
+          "q": "Карман",
+          "a": "Кишеня"
+        }
+      ],
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "6",
+      "slideDurationInFrames": 454,
+      "isRendered": true,
+      "createdAt": 1684143522574,
+      "id": 76
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "13",
+      "slideDurationInFrames": 560,
+      "part": 20,
+      "slides": [
+        {
+          "q": "Дєрєвня",
+          "a": "Село"
+        },
+        {
+          "q": "Бритва",
+          "a": "Станок для гоління"
+        },
+        {
+          "q": "Сумерки",
+          "a": "Сутінки"
+        }
+      ],
+      "createdAt": 1684225463537,
+      "id": 77,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🪒",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "14",
+      "slideDurationInFrames": 530,
+      "part": 21,
+      "slides": [
+        {
+          "q": "Темечко",
+          "a": "Кумпол"
+        },
+        {
+          "q": "Беременность",
+          "a": "Вагітність"
+        },
+        {
+          "q": "Новоселие",
+          "a": "Входини"
+        }
+      ],
+      "createdAt": 1684225967015,
+      "id": 78,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🤰",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "15",
+      "slideDurationInFrames": 416,
+      "part": 22,
+      "slides": [
+        {
+          "q": "Ландиш",
+          "a": "Конвалія"
+        },
+        {
+          "q": "Роза",
+          "a": "Троянда"
+        },
+        {
+          "q": "Бриллиант",
+          "a": "Діамант"
+        }
+      ],
+      "createdAt": 1684226095147,
+      "intro": "Тест на Українця 💎",
+      "subtitle": "Переклади на Українську ",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "id": 79,
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "16",
+      "slideDurationInFrames": 554,
+      "part": 23,
+      "slides": [
+        {
+          "q": "Арбуз",
+          "a": "Кавун"
+        },
+        {
+          "q": "Одуванчик",
+          "a": "Кульбаба"
+        },
+        {
+          "q": "Сельдерей",
+          "a": "Селера"
+        }
+      ],
+      "createdAt": 1684226193995,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍉",
+      "level": 4,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "id": 80,
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "17",
+      "slideDurationInFrames": 526,
+      "part": 24,
+      "slides": [
+        {
+          "q": "Стіралка",
+          "a": "Пралка"
+        },
+        {
+          "q": "Йолка",
+          "a": "Ялинка"
+        },
+        {
+          "q": "Пасха",
+          "a": "Великдень"
+        }
+      ],
+      "createdAt": 1684226293216,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🎄",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "id": 81,
+      "isRendered": true
+    },
+    {
+      "slides": [
+        {
+          "title": "Рута",
+          "hint": "Жовта квітка, яка лише на кілька хвилин, в ніч на Івана Купала, стає червоною.",
+          "description": "Символ краси, розквіту, зрілості."
+        },
+        {
+          "title": "Києво-Могилянська академія",
+          "hint": "Зображена на 500-гривневій банкноті.",
+          "description": "Заснована 15 жовтня 1615 р."
+        },
+        {
+          "title": "Зозуля",
+          "hint": "Вона кує роки життя.",
+          "description": "Зозуля - символ суму і вдівства. Вперше почувши зозулю навесні, маєш в кишені гроші, то будеш при грошах цілий рік."
+        }
+      ],
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "16",
+      "slideDurationInFrames": 600,
+      "createdAt": 1684241520302,
+      "intro": "Вгадай символ",
+      "subtitle": "Що це?",
+      "level": 4,
+      "outro": "Хочеш ще?\nПідпишись!",
+      "part": "8",
+      "cat": "Symbols",
+      "isRendered": true,
+      "id": 82
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "6",
+      "slideDurationInFrames": 454,
+      "part": 25,
+      "slides": [
+        {
+          "q": "Пєльонка",
+          "a": "Пелюшка"
+        },
+        {
+          "q": "Бутилочка",
+          "a": "Пляшечка"
+        },
+        {
+          "q": "Кроватка",
+          "a": "Ліжечко"
+        }
+      ],
+      "createdAt": 1684405368933,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍼",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 83
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "13",
+      "slideDurationInFrames": 560,
+      "part": 26,
+      "slides": [
+        {
+          "q": "Затилок",
+          "a": "Потилиця"
+        },
+        {
+          "q": "Бєдро",
+          "a": "Стегно"
+        },
+        {
+          "q": "Голінь",
+          "a": "Гомілка"
+        }
+      ],
+      "createdAt": 1684407037958,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍗",
+      "level": 2,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "id": 84,
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "12",
+      "slideDurationInFrames": 466,
+      "part": 27,
+      "slides": [
+        {
+          "q": "Половник",
+          "a": "Ополоник"
+        },
+        {
+          "q": "Солонка",
+          "a": "Сільниця"
+        },
+        {
+          "q": "Стакан",
+          "a": "Склянка"
+        }
+      ],
+      "createdAt": 1684408454181,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍶",
+      "level": 3,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "id": 85,
+      "isRendered": true
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "9",
+      "slideDurationInFrames": 520,
+      "part": 28,
+      "slides": [
+        {
+          "q": "Вішенка",
+          "a": "Глива"
+        },
+        {
+          "q": "Масльонок",
+          "a": "Маслюк"
+        },
+        {
+          "q": "Підосиновик",
+          "a": "Підосичник"
+        }
+      ],
+      "createdAt": 1684408816092,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍄",
+      "level": 4,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 86
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#000000",
+        "#000000"
+      ],
+      "color": "#ffffff",
+      "music": "11",
+      "slideDurationInFrames": 520,
+      "part": 29,
+      "slides": [
+        {
+          "q": "Салфєтка",
+          "a": "Серветка"
+        },
+        {
+          "q": "Хлопья",
+          "a": "Пластівці"
+        },
+        {
+          "q": "Поднос",
+          "a": "Таця"
+        }
+      ],
+      "createdAt": 1684432172648,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🍱",
+      "level": 4,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 87
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001124",
+        "#191600"
+      ],
+      "color": "#ffffff",
+      "music": "1",
+      "slideDurationInFrames": 420,
+      "part": 30,
+      "slides": [
+        {
+          "q": "Мусорнік",
+          "a": "Смітник"
+        },
+        {
+          "q": "Зонт",
+          "a": "Парасоля"
+        },
+        {
+          "q": "Потолок",
+          "a": "Стеля"
+        }
+      ],
+      "createdAt": 1684508948404,
+      "intro": "Тест на Українця",
+      "subtitle": "Переклади на Українську 🗑️",
+      "level": 2,
+      "outro": "Ти знаєш кому\nце відправити 👍",
+      "isRendered": true,
+      "id": 88
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001833",
+        "#2e2900"
+      ],
+      "color": "#ffffff",
+      "music": "12",
+      "slideDurationInFrames": 466,
+      "part": 31,
+      "slides": [
+        {
+          "q": "Погремушка",
+          "a": "Брязкальце"
+        },
+        {
+          "q": "Стелька",
+          "a": "Устілка"
+        },
+        {
+          "q": "Рибалка",
+          "a": "Риболовля"
+        }
+      ],
+      "createdAt": 1684573133215,
+      "intro": "Ти з України? 🇺🇦",
+      "subtitle": "Спробуй перекласти 🎣",
+      "level": 4,
+      "outro": "",
+      "isRendered": true,
+      "id": 89
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001833",
+        "#2e2900"
+      ],
+      "color": "#ffffff",
+      "music": "13",
+      "slideDurationInFrames": 560,
+      "part": 32,
+      "slides": [
+        {
+          "q": "Лінк",
+          "a": "Посилання"
+        },
+        {
+          "q": "Лайк",
+          "a": "Вподобайка"
+        },
+        {
+          "q": "Пікнік",
+          "a": "Гаївка"
+        }
+      ],
+      "createdAt": 1684597490038,
+      "intro": "Ти з України? 🇺🇦",
+      "subtitle": "Спробуй перекласти ❤️‍🔥",
+      "level": 4,
+      "outro": "",
+      "isRendered": true,
+      "id": 90
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001833",
+        "#2e2900"
+      ],
+      "color": "#ffffff",
+      "music": "8",
+      "slideDurationInFrames": 488,
+      "part": 33,
+      "slides": [
+        {
+          "q": "Трубка",
+          "a": "Люлька"
+        },
+        {
+          "q": "Трубка",
+          "a": "Слухавка"
+        },
+        {
+          "q": "Трубка",
+          "a": "Соломинка"
+        }
+      ],
+      "createdAt": 1684659292703,
+      "intro": "Ти з України? 🇺🇦",
+      "subtitle": "Спробуй перекласти 🪈",
+      "level": 3,
+      "outro": "",
+      "isRendered": true,
+      "id": 91
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001833",
+        "#2e2900"
+      ],
+      "color": "#ffffff",
+      "music": "18",
+      "slideDurationInFrames": 310,
+      "part": "34",
+      "slides": [
+        {
+          "q": "Відкрити очі",
+          "a": "Розплющити"
+        },
+        {
+          "q": "Відкрити вікно або двері",
+          "a": "Відчинити"
+        },
+        {
+          "q": "Відкрити книжку",
+          "a": "Розгорнути"
+        },
+        {
+          "q": "Відкрити винахід",
+          "a": "Винайти"
+        },
+        {
+          "q": "Відкрити пляшку",
+          "a": "Відкоркувати"
+        },
+        {
+          "q": "Відкрити рот",
+          "a": "Розтулити"
+        },
+        {
+          "q": "Відкрити завісу",
+          "a": "Відслонити"
+        },
+        {
+          "q": "Відкрити заслін",
+          "a": "Відтулити"
+        },
+        {
+          "q": "Відкрити таємницю",
+          "a": "Звіряти"
+        },
+        {
+          "q": "Відкрити перса",
+          "a": "Розхристати"
+        },
+        {
+          "q": "Відкрити стрільбу",
+          "a": "Почати"
+        },
+        {
+          "q": "Відкрити пащеку",
+          "a": "Роззявити"
+        },
+        {
+          "q": "Відкрити злочин",
+          "a": "Викрити"
+        },
+        {
+          "q": "Відкрити замок",
+          "a": "Відімкнути"
+        },
+        {
+          "q": "Відкрити сполучення",
+          "a": "Запровадити"
+        },
+        {
+          "q": "Відкрити щось нове",
+          "a": "Виявити"
+        },
+        {
+          "q": "Відкрити збори",
+          "a": "Розпочати"
+        },
+        {
+          "q": "Відкрити поклади",
+          "a": "Віднайти"
+        },
+        {
+          "q": "Відкрити заклади",
+          "a": "Закладати"
+        }
+      ],
+      "createdAt": 1684661095217,
+      "intro": "Ти з України? 🇺🇦",
+      "subtitle": "Говори правильно!",
+      "level": 5,
+      "outro": "",
+      "isRendered": true,
+      "id": 92
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "1",
+      "slideDurationInFrames": 420,
+      "part": "35",
+      "slides": [
+        {
+          "q": "Укроп",
+          "a": "Кріп"
+        },
+        {
+          "q": "Уксус",
+          "a": "Оцет"
+        },
+        {
+          "q": "Ужин",
+          "a": "Вечеря"
+        }
+      ],
+      "createdAt": 1684848718723,
+      "intro": "Ти з України? 🇺🇦",
+      "subtitle": "Спробуй перекласти 🍷",
+      "level": 3,
+      "outro": "",
+      "isRendered": true,
+      "id": 93
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "11",
+      "slideDurationInFrames": 436,
+      "part": "36",
+      "slides": [
+        {
+          "q": "-Лодка",
+          "a": "Човен"
+        },
+        {
+          "q": "-Блінчик",
+          "a": "Млинець"
+        },
+        {
+          "q": "-Бумага",
+          "a": "Папір"
+        }
+      ],
+      "createdAt": 1684952185239,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 3,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "id": 94
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "17",
+      "slideDurationInFrames": 526,
+      "part": "37",
+      "slides": [
+        {
+          "a": "Сірники"
+        },
+        {
+          "a": "Скриня"
+        },
+        {
+          "a": "Цвях"
+        }
+      ],
+      "createdAt": 1685019276472,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 2,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "id": 95
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "11",
+      "slideDurationInFrames": 436,
+      "part": "38",
+      "slides": [
+        {
+          "a": "Ґулька"
+        },
+        {
+          "a": "Ґудзики"
+        },
+        {
+          "a": "Дзиґа"
+        }
+      ],
+      "createdAt": 1685104477418,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 4,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "id": 96
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "19",
+      "slideDurationInFrames": 324,
+      "part": "39",
+      "slides": [
+        {
+          "a": "Привид"
+        },
+        {
+          "a": "Марево"
+        },
+        {
+          "a": "Мряка"
+        }
+      ],
+      "createdAt": 1685205733527,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 4,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "id": 97
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "19",
+      "slideDurationInFrames": 500,
+      "part": "40",
+      "slides": [
+        {
+          "a": "Мереживо"
+        },
+        {
+          "a": "Жердина"
+        },
+        {
+          "a": "Пасок"
+        }
+      ],
+      "createdAt": 1685277972209,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 4,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "id": 98,
+      "durationInFrames": null
+    },
+    {
+      "cat": "Slides",
+      "bg": [
+        "#001d3d",
+        "#383200"
+      ],
+      "color": "#ffffff",
+      "music": "19",
+      "slideDurationInFrames": 500,
+      "part": "41",
+      "slides": [
+        {
+          "a": "Пес"
+        },
+        {
+          "a": "Стежка"
+        },
+        {
+          "q": "Мєчта",
+          "a": "Мрія"
+        }
+      ],
+      "createdAt": 1685375451240,
+      "intro": "Назвіть це",
+      "subtitle": "українською мовою 🇺🇦",
+      "level": 4,
+      "outro": "Підпишись 😌",
+      "isRendered": true,
+      "durationInFrames": null,
+      "id": 99
+    }
+  ],
+  "queues": []
+}

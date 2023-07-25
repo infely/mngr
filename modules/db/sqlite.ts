@@ -77,8 +77,10 @@ export default class DbSqlite implements Db {
   }
   types() {
     return {
+      boolean: { icon: '', color: 'Red' },
       datetime: { icon: '', color: 'Red' },
       integer: { icon: '', color: 'Magenta' },
+      integer_unsigned: { icon: '', color: 'Magenta' },
       numeric: { icon: '', color: 'Magenta' },
       nvarchar: { icon: 'ﮜ', color: 'Yellow' },
       text: { icon: '', color: 'Yellow' }

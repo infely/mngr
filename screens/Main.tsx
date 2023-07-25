@@ -97,9 +97,10 @@ export default () => {
     return cols.map(({ type, name }) => {
       const types = db.types()
       const [typeName, typeSize] = type.split(/[()]/)
-      const icon = types[typeName.toLowerCase()]?.icon || type
+      const key = typeName.toLowerCase().replaceAll(' ', '_')
+      const icon = types[key]?.icon || type
       const size = typeSize ? typeSize : ''
-      const color = types[typeName.toLowerCase()]?.color
+      const color = types[key]?.color
       const sort = o.order[name] !== undefined ? ` ${o.order[name] === 1 ? '' : ''}` : ''
       const jump = ![-1, table].includes(findRelationTableIndex(name)) ? ' ' : ''
       return new HeadItem(`${icon}${size} ${name}${sort}${jump}`, { color }) 

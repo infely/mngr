@@ -1,7 +1,7 @@
 import pg, { type Client } from 'pg'
 import { type Db, type DbCol } from '.'
 
-export default class DbPostgres implements Db {
+export default class DbPostgresql implements Db {
   db: Client
   constructor(url: string) {
     const [host, database] = url.split('/')
@@ -12,10 +12,10 @@ export default class DbPostgres implements Db {
     const { rows } = await this.db.query(
       `SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'`
     )
-    return rows.map((i: any) => i.tablename).sort((a: string, b: string) => a.localeCompare(b))
+    return rows.map((i: any) => i.tablename).filter(i => !i.startsWith('_')).sort((a: string, b: string) => a.localeCompare(b))
   }
   async cols(table: string) {
-    const { rows } = await this.db.query(`SELECT * FROM information_schema.columns WHERE table_name = '${table}'`)
+    const { rows } = await this.db.query('SELECT * FROM information_schema.columns WHERE table_name = $1', [table])
     return rows.map((i: any, index: number) => ({ name: i.column_name, type: i.udt_name, pk: index === 0 ? 1 : 0 }))
   }
   async rows(
@@ -54,10 +54,14 @@ export default class DbPostgres implements Db {
   types() {
     return {
       bytea: { icon: '', color: 'Magenta' },
+      bool: { icon: '', color: 'Red' },
       date: { icon: '', color: 'Red' },
+      timestamp: { icon: '', color: 'Red' },
+      timestamptz: { icon: '', color: 'Red' },
       float4: { icon: '', color: 'Magenta' },
       int2: { icon: '', color: 'Magenta' },
       int4: { icon: '', color: 'Magenta' },
+      _int4: { icon: '', color: 'Magenta' },
       int8: { icon: '', color: 'Magenta' },
       text: { icon: '', color: 'Yellow' },
       varchar: { icon: 'ﮜ', color: 'Yellow' }
@@ -68,8 +72,11 @@ export default class DbPostgres implements Db {
     return rows.map(row =>
       Object.fromEntries(
         Object.entries(row).map(([key, value]) => {
-          if (types[key] === 'date') value = value.toISOString()
-          else if (types[key] === 'bytea') value = JSON.stringify(value)
+          if (value !== null) {
+            if (['date', 'timestamp', 'timestamptz'].includes(types[key])) value = value.toISOString()
+            else if (types[key] === 'bytea') value = JSON.stringify(value)
+            else if (types[key] === 'bool') value = (value as any).toString().toLowerCase() === 'true'
+          }
           return [key, value]
         })
       )
