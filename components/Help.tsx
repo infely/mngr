@@ -30,7 +30,7 @@ export default () => {
           ['A, Y', 'insert, duplicate selected'],
           ['dD', 'delete selected'],
           ['[, ]', 'prev, next page'],
-          ['-, +, S-, S+', 'sort, add sort'],
+          ['-, =, _, +', 'sort, add sort'],
           ['r, Backspace', 'reload, reset'],
           ['Space, uv', 'mark row, unmark all'],
           ['C-a, C-x', 'inrement, decrement'],
@@ -48,14 +48,7 @@ export default () => {
   if (!helpContent) return null
 
   return (
-    <Text
-      absolute
-      y={`100%-${helpContent.length + 3}`}
-      x={0}
-      height={helpContent.length + 1}
-      width="100%"
-      clear
-    >
+    <Text absolute y={`100%-${helpContent.length + 3}`} x={0} height={helpContent.length + 1} width="100%" clear>
       <Separator type="horizontal" width={width} color={palette.dark1} />
       <Text y={0} x={16} color={palette.dark1} block>
         ┴
@@ -72,7 +65,7 @@ export default () => {
               </Text>
             ))}
           </Text>
-          {' ' + ' '.repeat(Math.max(0, 14 - keys.length)) + value}
+          {' →' + ' '.repeat(Math.max(0, 14 - keys.length)) + value}
         </Text>
       ))}
     </Text>

@@ -81,8 +81,8 @@ export default class DbSqlite implements Db {
       datetime: { icon: '', color: 'Red' },
       integer: { icon: '', color: 'Magenta' },
       integer_unsigned: { icon: '', color: 'Magenta' },
-      numeric: { icon: '', color: 'Magenta' },
-      nvarchar: { icon: 'ﮜ', color: 'Yellow' },
+      numeric: { icon: '', color: 'Magenta' },
+      nvarchar: { icon: '', color: 'Yellow' },
       text: { icon: '', color: 'Yellow' }
     }
   }

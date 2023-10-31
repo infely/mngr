@@ -90,20 +90,20 @@ export default () => {
 
   const findRelationTableIndex = (name: string) => {
     const q = name.replace(/Id$/, '').replace(/_id$/, '')
-    return tables.findIndex((i: string) => [q, `${q}s`, `${q}es`].includes(i))
+    return tables.findIndex((i: string) => [q, `${q}s`, `${q}es`].includes(i.toLowerCase()))
   }
 
   const head = useMemo(() => {
     return cols.map(({ type, name }) => {
-      const types = db.types()
       const [typeName, typeSize] = type.split(/[()]/)
-      const key = typeName.toLowerCase().replaceAll(' ', '_')
-      const icon = types[key]?.icon || type
+      const key = typeName.toLowerCase().replaceAll(' ', '_').replace(/_^/, '')
+      const dbType = Object.entries(db.types()).find(([k]) => key.startsWith(k))?.[1]
+      const icon = dbType?.icon || type
       const size = typeSize ? typeSize : ''
-      const color = types[key]?.color
+      const color = dbType?.color
       const sort = o.order[name] !== undefined ? ` ${o.order[name] === 1 ? '' : ''}` : ''
       const jump = ![-1, table].includes(findRelationTableIndex(name)) ? ' ' : ''
-      return new HeadItem(`${icon}${size} ${name}${sort}${jump}`, { color }) 
+      return new HeadItem(`${icon}${size} ${name}${sort}${jump}`, { color })
     })
   }, [cols, o.order])
 
@@ -457,11 +457,7 @@ export default () => {
       <Text absolute y="100%-1" x={0} height={1}>
         {focus !== 'main/search' && status}
         {focus === 'main/search' && (
-          <Input
-            initialValue={initialValue}
-            onCancel={() => dispatch('setFocus', 'main')}
-            onSubmit={onSearchSubmit}
-          />
+          <Input initialValue={initialValue} onCancel={() => dispatch('setFocus', 'main')} onSubmit={onSearchSubmit} />
         )}
       </Text>
       {seq && (

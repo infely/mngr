@@ -13,9 +13,9 @@ export default class DbMongodb implements Db {
     const tables = await this.db.listCollections().toArray()
     return tables.map(({ name }) => name).sort((a: string, b: string) => a.localeCompare(b))
   }
-  cols(_table: string, rows: object[] | object[][]): DbCol[] {
+  cols(_table: string, rows?: object[] | object[][]): DbCol[] {
     const cols = {}
-    rows.forEach(row =>
+    rows?.forEach(row =>
       Object.entries(row).forEach(([name, value]) => {
         let type = 'string'
         if (typeof value === 'object') {
@@ -74,7 +74,7 @@ export default class DbMongodb implements Db {
       array: { icon: '', color: 'Red' },
       boolean: { icon: '', color: 'Red' },
       datetime: { icon: '', color: 'Red' },
-      id: { icon: '', color: 'Magenta' },
+      id: { icon: '', color: 'Magenta' },
       number: { icon: '', color: 'Magenta' },
       object: { icon: '', color: 'Red' },
       string: { icon: '', color: 'Yellow' }

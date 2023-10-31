@@ -30,7 +30,7 @@ const App = () => {
       json: ' ',
       mariadb: ' ',
       mongodb: ' ',
-      postgres: ' ',
+      postgresql: ' ',
       sqlite: ' '
     }[protocol]
   }, [url])

@@ -47,12 +47,12 @@ export default class DbMariadb implements Db {
   }
   types() {
     return {
-      char: { icon: 'ﮜ', color: 'Yellow' },
+      char: { icon: '', color: 'Yellow' },
       date: { icon: '', color: 'Red' },
       decimal: { icon: '', color: 'Magenta' },
       int: { icon: '', color: 'Magenta' },
       tinyint: { icon: '', color: 'Magenta' },
-      varchar: { icon: 'ﮜ', color: 'Yellow' }
+      varchar: { icon: '', color: 'Yellow' }
     }
   }
   format(_cols: DbCol[], rows: object[]) {

@@ -37,9 +37,9 @@ export default class DbJson implements Db {
 
     return tables
   }
-  cols(_table: string, rows: object[] | object[][]) {
+  cols(_table: string, rows?: object[] | object[][]) {
     const cols = {}
-    rows.forEach(row =>
+    rows?.forEach(row =>
       Object.entries(row).forEach(([name, value]) => {
         let type = 'string'
         if (typeof value === 'number') type = 'number'

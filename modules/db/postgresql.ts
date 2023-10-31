@@ -12,7 +12,10 @@ export default class DbPostgresql implements Db {
     const { rows } = await this.db.query(
       `SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'`
     )
-    return rows.map((i: any) => i.tablename).filter(i => !i.startsWith('_')).sort((a: string, b: string) => a.localeCompare(b))
+    return rows
+      .map((i: any) => i.tablename)
+      .filter(i => !i.startsWith('_'))
+      .sort((a: string, b: string) => a.localeCompare(b))
   }
   async cols(table: string) {
     const { rows } = await this.db.query('SELECT * FROM information_schema.columns WHERE table_name = $1', [table])
@@ -25,19 +28,19 @@ export default class DbPostgresql implements Db {
     skip: number = 0,
     limit: number = 100
   ): Promise<[string, number, object[], undefined]> {
-    const { rows: res } = await this.db.query(`SELECT COUNT(*) FROM ${table}`)
+    const { rows: res } = await this.db.query(`SELECT COUNT(*) FROM "${table}"`)
     const count = parseInt(res?.[0]?.count ?? 0)
 
-    let sql = `SELECT * FROM ${table}${
+    let sql = `SELECT * FROM "${table}"${
       Object.keys(where).length > 0
         ? ` WHERE ${Object.entries(where)
-            .map(([k, v]) => (v.$regex ? `${k} LIKE '%${v.$regex}%'` : `${k} = '${v}'`))
+            .map(([k, v]) => (v.$regex ? `"${k}" LIKE '%${v.$regex}%'` : `"${k}" = '${v}'`))
             .join(' AND ')}`
         : ''
     }${
       Object.keys(order).length > 0
         ? ` ORDER BY ${Object.entries(order)
-            .map(([k, v]) => `${k} ${v === 1 ? 'ASC' : 'DESC'}`)
+            .map(([k, v]) => `"${k}" ${v === 1 ? 'ASC' : 'DESC'}`)
             .join(', ')}`
         : ' ORDER BY 1'
     }${count > limit ? ` LIMIT ${limit}` : ''}${skip > 0 ? ` OFFSET ${skip}` : ''}`
@@ -53,18 +56,17 @@ export default class DbPostgresql implements Db {
   }
   types() {
     return {
-      bytea: { icon: '', color: 'Magenta' },
+      _float: { icon: '', color: 'Magenta' },
+      _int: { icon: '', color: 'Magenta' },
+      _text: { icon: '', color: 'Yellow' },
       bool: { icon: '', color: 'Red' },
+      bytea: { icon: '', color: 'Magenta' },
       date: { icon: '', color: 'Red' },
-      timestamp: { icon: '', color: 'Red' },
-      timestamptz: { icon: '', color: 'Red' },
-      float4: { icon: '', color: 'Magenta' },
-      int2: { icon: '', color: 'Magenta' },
-      int4: { icon: '', color: 'Magenta' },
-      _int4: { icon: '', color: 'Magenta' },
-      int8: { icon: '', color: 'Magenta' },
+      float: { icon: '', color: 'Magenta' },
+      int: { icon: '', color: 'Magenta' },
       text: { icon: '', color: 'Yellow' },
-      varchar: { icon: 'ﮜ', color: 'Yellow' }
+      timestamp: { icon: '', color: 'Red' },
+      varchar: { icon: '', color: 'Yellow' }
     }
   }
   format(cols: DbCol[], rows: object[]) {
@@ -84,7 +86,7 @@ export default class DbPostgresql implements Db {
   }
   async template(table: string, cols: DbCol[], jsons: object[] | undefined) {
     const name = this.id(cols)
-    const { rows: res } = await this.db.query(`SELECT ${name} FROM ${table} ORDER BY ${name} DESC LIMIT 1`)
+    const { rows: res } = await this.db.query(`SELECT "${name}" FROM "${table}" ORDER BY "${name}" DESC LIMIT 1`)
     let id = parseInt(res?.[0]?.[name] || 0)
 
     return (jsons || [{}]).map(json =>
@@ -98,9 +100,9 @@ export default class DbPostgresql implements Db {
     const ids: string[] = []
     for (const jsonNew of jsons) {
       const { rows: res } = await this.db.query(
-        `INSERT INTO ${table} VALUES (${Object.keys(jsonNew)
+        `INSERT INTO "${table}" VALUES (${Object.keys(jsonNew)
           .map((_, index) => `$${index + 1}`)
-          .join(', ')}) RETURNING ${name}`,
+          .join(', ')}) RETURNING "${name}"`,
         Object.values(jsonNew)
       )
 
@@ -123,7 +125,9 @@ export default class DbPostgresql implements Db {
 
       const res = Object.fromEntries(changes as any)
       await this.db.query(
-        `UPDATE ${table} SET ${Object.keys(res).map((i, index) => `${i} = $${index + 1}`)} WHERE ${name} = ${rowid}`,
+        `UPDATE "${table}" SET ${Object.keys(res).map(
+          (i, index) => `"${i}" = $${index + 1}`
+        )} WHERE "${name}" = ${rowid}`,
         Object.values(res)
       )
 
@@ -137,14 +141,14 @@ export default class DbPostgresql implements Db {
     if (!Array.isArray(ids)) ids = [ids]
 
     await this.db.query(
-      `DELETE FROM ${table} WHERE ${name} IN (${ids.map((_, index) => `$${index + 1}`).join(', ')})`,
+      `DELETE FROM "${table}" WHERE "${name}" IN (${ids.map((_, index) => `$${index + 1}`).join(', ')})`,
       ids
     )
     return (ids as number[]).map((id: number) => id.toString())
   }
   async createTable(table: string) {
     try {
-      await this.db.query(`CREATE TABLE ${table} (id SERIAL PRIMARY KEY)`)
+      await this.db.query(`CREATE TABLE "${table}" (id SERIAL PRIMARY KEY)`)
       return true
     } catch (err) {
       return false
@@ -152,7 +156,7 @@ export default class DbPostgresql implements Db {
   }
   async renameTable(table: string, tableNew: string) {
     try {
-      await this.db.query(`ALTER TABLE ${table} RENAME TO ${tableNew}`)
+      await this.db.query(`ALTER TABLE "${table}" RENAME TO ${tableNew}`)
       return true
     } catch (err) {
       return false
@@ -160,7 +164,7 @@ export default class DbPostgresql implements Db {
   }
   async dropTable(table: string) {
     try {
-      await this.db.query(`DROP TABLE ${table}`)
+      await this.db.query(`DROP TABLE "${table}"`)
       return true
     } catch {
       return false
