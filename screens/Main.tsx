@@ -233,8 +233,12 @@ export default () => {
   }
 
   const onSearch = () => {
-    const key = cols[pos.x]?.name
-    setInitialValue(key ? `/${key}:` : '')
+    if (!cols[pos.x]) return
+
+    const { type, name } = cols[pos.x]
+    const op = ['text'].includes(type) ? ':' : '='
+
+    setInitialValue(name ? `/${name}${op}` : '')
     dispatch('setFocus', 'main/search')
   }
 

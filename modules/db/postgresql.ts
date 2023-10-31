@@ -45,7 +45,11 @@ export default class DbPostgresql implements Db {
         : ' ORDER BY 1'
     }${count > limit ? ` LIMIT ${limit}` : ''}${skip > 0 ? ` OFFSET ${skip}` : ''}`
 
-    const { rows } = await this.db.query(sql)
+    let rows: any[] = []
+    try {
+      const res = await this.db.query(sql)
+      rows = res.rows
+    } catch {}
 
     sql = sql.replace(' ORDER BY 1', '')
 

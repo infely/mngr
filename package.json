@@ -1,6 +1,6 @@
 {
   "name": "mngr",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "Command-line cross-platform databases management TUI tool",
   "keywords": [
     "admin",
