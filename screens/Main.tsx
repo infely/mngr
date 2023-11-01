@@ -158,7 +158,7 @@ export default () => {
         const json = rows[pos.y]
         const jsonNew = { ...json, [cols[pos.x].name]: value }
         const res = await db.update(tables[table], cols, [jsonNew], [json])
-        if (!res) return
+        if (res.length === 0) return
 
         dispatch('setStatus', `"${res}" written`)
         reload()

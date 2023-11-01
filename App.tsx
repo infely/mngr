@@ -7,14 +7,6 @@ import { useStore } from './store'
 import { initDb } from './hooks/useDb'
 import url from './modules/parseArg'
 
-// const url = 'json://examples/db.json'
-// const url = 'mariadb://localhost/nation'
-// const url = 'mongodb://localhost/foodmart'
-// const url = 'mongodb://localhost/example'
-// const url = 'postgres://localhost/northwind'
-// const url = 'sqlite://examples/Chinook_Sqlite.sqlite3'
-// const url = 'sqlite://examples/db.sqlite3'
-
 initDb(url)
 
 const App = () => {

@@ -8,6 +8,10 @@ export default class DbPostgresql implements Db {
     this.db = new pg.Client({ host, database })
     this.db.connect()
   }
+  async databases() {
+    const { rows } = await this.db.query('SELECT * FROM pg_catalog.pg_database')
+    return rows.map(i => i.datname).sort((a: string, b: string) => a.localeCompare(b))
+  }
   async tables() {
     const { rows } = await this.db.query(
       `SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'`
@@ -128,14 +132,15 @@ export default class DbPostgresql implements Db {
         .filter(i => i)
 
       const res = Object.fromEntries(changes as any)
-      await this.db.query(
-        `UPDATE "${table}" SET ${Object.keys(res).map(
-          (i, index) => `"${i}" = $${index + 1}`
-        )} WHERE "${name}" = ${rowid}`,
-        Object.values(res)
-      )
-
-      ids.push(rowid.toString())
+      if (changes.length > 0) {
+        await this.db.query(
+          `UPDATE "${table}" SET ${Object.keys(res).map(
+            (i, index) => `"${i}" = $${index + 1}`
+          )} WHERE "${name}" = ${rowid}`,
+          Object.values(res)
+        )
+        ids.push(rowid.toString())
+      }
     }
     return ids
   }

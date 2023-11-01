@@ -11,7 +11,26 @@ if (argv.length > 2) {
 }
 
 if (!url) {
-  console.log('usage: mngr db.json')
+  console.log(`USAGE:
+  mngr [URL]
+
+EXAMPLES:
+  mngr db.json
+  mngr json://db.json
+
+  mngr mongodb:///db
+  mngr mongodb://localhost/db
+
+  mngr postgres:///db
+  mngr postgres://localhost/db
+
+  mngr mariadb:///db
+  mngr mariadb://localhost/db
+
+  mngr db.sqlite3
+  mngr sqlite://db.sqlite3
+  mngr sqlite://db.sqlite
+  mngr sqlite://db.db`)
   process.exit(0)
 }
 

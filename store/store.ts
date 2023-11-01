@@ -2,6 +2,8 @@ export const initialState = {
   focus: null,
   sql: '',
   status: '',
+  databases: [],
+  database: 0,
   tables: [],
   table: 0,
   count: 0,
@@ -27,11 +29,17 @@ export const actions = {
   setStatus(state: any, status: any = '') {
     return { ...state, status }
   },
-  setTable(state: any, table: any = 0) {
-    return { ...state, table }
+  setDatabases(state: any, databases: any = []) {
+    return { ...state, databases }
+  },
+  setDatabase(state: any, database: any = 0) {
+    return { ...state, database }
   },
   setTables(state: any, tables: any = []) {
     return { ...state, tables }
+  },
+  setTable(state: any, table: any = 0) {
+    return { ...state, table }
   },
   setCols(state: any, cols: any = []) {
     return { ...state, cols }
