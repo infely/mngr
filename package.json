@@ -1,6 +1,6 @@
 {
   "name": "mngr",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "description": "Command-line cross-platform databases management TUI tool",
   "keywords": [
     "admin",
@@ -55,7 +55,7 @@
     "mariadb": "^3.2.2",
     "mongodb": "^6.2.0",
     "pg": "^8.11.3",
-    "react-curse": "^1.0.12",
+    "react-curse": "^1.0.13",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
