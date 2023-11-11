@@ -128,7 +128,7 @@ export default class DbPostgresql implements Db {
       const name = this.id(cols)
       const rowid = jsonOld[name]
       const changes = Object.keys(jsonOld)
-        .map(i => jsonOld[i].toString() !== jsonNew[i].toString() && [i, jsonNew[i]])
+        .map(i => jsonOld[i]?.toString() !== jsonNew[i]?.toString() && [i, jsonNew[i] || null])
         .filter(i => i)
 
       const res = Object.fromEntries(changes as any)
