@@ -9,22 +9,33 @@ export default () => {
   const focus = useStore(s => s.focus)
   const status = useStore(s => s.status)
   const tables = useStore(s => s.tables)
+  const databases = useStore(s => s.databases)
   const table = useStore(s => s.table)
   const palette = useStore(s => s.palette)
   const [pos, setPos] = useState<ListPos>({ y: table, x: 0, yo: 0, xo: 0, x1: 0, x2: 0 })
   const [confirm, setConfirm] = useState<string | null>(null)
   const [seq, setSeq] = useState<string>('')
   const [search, setSearch] = useState<number[]>([])
+  const selectDb = useStore(s => s.selectDb)
 
   const y = useMemo(() => {
     return Math.min(height - 4, tables.length)
   }, [height, tables])
 
   const onSubmit = () => {
-    if (tables.length === 0) return
+    if (!selectDb) {
+      if (tables.length === 0) return
 
-    if (table !== pos.y) dispatch('setTable', pos.y)
-    dispatch('setFocus', 'main')
+      if (table !== pos.y) dispatch('setTable', pos.y)
+      dispatch('setFocus', 'main')
+    } else {
+      if (databases.length === 0) return
+
+      db.setDb(databases[pos.y])
+      init()
+
+      dispatch('setSelectDb', false)
+    }
   }
 
   const createTableHandler = async () => {
@@ -32,7 +43,7 @@ export default () => {
   }
 
   const onCreateSubmit = useCallback((value: string) => {
-    ;(async () => {
+    ; (async () => {
       dispatch('setFocus', 'sidebar')
 
       value = value.trim()
@@ -59,7 +70,7 @@ export default () => {
 
   const onEditSubmit = useCallback(
     (value: string) => {
-      ;(async () => {
+      ; (async () => {
         dispatch('setFocus', 'sidebar')
 
         value = value.trim()
@@ -121,13 +132,16 @@ export default () => {
     setSearch(newSearch)
   }
 
-  useEffect(() => {
-    ;(async () => {
-      const tables = await db.tables()
-      dispatch('setTables', tables)
+  const init = async () => {
+    const tables = await db.tables()
+    dispatch('setTables', tables)
+    const databases = await db.databases()
+    dispatch('setDatabases', databases)
 
-      if (focus === null) dispatch('setFocus', tables.length > 0 ? 'main' : 'sidebar')
-    })()
+    if (focus === null) dispatch('setFocus', tables.length > 0 ? 'main' : 'sidebar')
+  }
+  useEffect(() => {
+    init()
   }, [])
 
   useEffect(() => {
@@ -192,45 +206,48 @@ export default () => {
 
   return (
     <>
-      {tables.length === 0 && focus === 'sidebar' && <Text dim>empty</Text>}
-      {tables.length > 0 && (
-        <>
-          <List
-            focus={focus === 'sidebar'}
-            initialPos={pos}
-            data={tables}
-            renderItem={({ item, focus, selected }) => (
-              <Text
-                color={selected ? 'Green' : undefined}
-                background={selected && focus ? palette.dark1 : undefined}
-                width="100%"
-              >
-                 {item}
-              </Text>
-            )}
-            width={16}
-            height={height - 3}
-            scrollbar={false}
-            scrollbarBackground={palette.dark1}
-            scrollbarColor={palette.light4}
-            onChange={setPos}
-          />
-          {focus === 'sidebar/edit' && (
-            <Input
-              y={pos.y}
-              x={2}
-              width={16 - 2}
-              initialValue={tables[pos.y]}
-              height={1}
-              background={palette.dark2}
-              color={palette.light1}
-              onSubmit={onEditSubmit}
-              onCancel={() => dispatch('setFocus', 'sidebar')}
+      {selectDb && databases.length === 0 && focus === 'sidebar' && <Text dim>no dbs</Text>}
+      {!selectDb && tables.length === 0 && focus === 'sidebar' && <Text dim>no tables</Text>}
+      {!selectDb &&
+        tables.length > 0 && (
+          <>
+            <List
+              focus={focus === 'sidebar'}
+              initialPos={pos}
+              data={tables}
+              renderItem={({ item, focus, selected }) => (
+                <Text
+                  color={selected ? 'Green' : undefined}
+                  background={selected && focus ? palette.dark1 : undefined}
+                  width="100%"
+                >
+                   {item}
+                </Text>
+              )}
+              width={16}
+              height={height - 3}
+              scrollbar={false}
+              scrollbarBackground={palette.dark1}
+              scrollbarColor={palette.light4}
+              onChange={setPos}
             />
-          )}
-        </>
-      )}
-      {focus === 'sidebar/create' && (
+            {focus === 'sidebar/edit' && (
+              <Input
+                y={pos.y}
+                x={2}
+                width={16 - 2}
+                initialValue={tables[pos.y]}
+                height={1}
+                background={palette.dark2}
+                color={palette.light1}
+                onSubmit={onEditSubmit}
+                onCancel={() => dispatch('setFocus', 'sidebar')}
+              />
+            )}
+          </>
+        )
+      }
+      {!selectDb && focus === 'sidebar/create' && (
         <Text y={y} x={0}>
           <Text>{'匿 '}</Text>
           <Input
@@ -242,7 +259,34 @@ export default () => {
             onCancel={() => dispatch('setFocus', 'sidebar')}
           />
         </Text>
-      )}
+      )
+      }
+      {selectDb &&
+        databases.length > 0 && (
+          <>
+            <List
+              focus={focus === 'sidebar'}
+              initialPos={pos}
+              data={databases}
+              renderItem={({ item, focus, selected }) => (
+                <Text
+                  color={selected ? 'Green' : undefined}
+                  background={selected && focus ? palette.dark1 : undefined}
+                  width="100%"
+                >
+                   {item}
+                </Text>
+              )}
+              width={16}
+              height={height - 3}
+              scrollbar={false}
+              scrollbarBackground={palette.dark1}
+              scrollbarColor={palette.light4}
+              onChange={setPos}
+            />
+          </>
+        )
+      }
       <Text absolute y="100%-1" x={0} height={1}>
         {focus === 'sidebar/search' && (
           <Input

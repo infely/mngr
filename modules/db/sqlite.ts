@@ -17,6 +17,10 @@ export default class DbSqlite implements Db {
       })
     })
   }
+  async databases(): Promise<string[]> {
+    return []
+  }
+  setDb(db: string): void {}
   cols(table: string) {
     return new Promise<DbCol[]>((resolve: any, reject: any) => {
       this.db.all(`PRAGMA table_info(${table})`, (err: Error | null, res: any) => {

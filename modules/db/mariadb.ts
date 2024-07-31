@@ -10,6 +10,10 @@ export default class DbMariadb implements Db {
     const res = await this.db.query('SHOW TABLES')
     return res.map((i: any) => Object.values(i)[0])
   }
+  async databases(): Promise<string[]> {
+    return []
+  }
+  setDb(db: string): void {}
   async cols(table: string) {
     const res = await this.db.query(`SHOW COLUMNS FROM ${table}`)
     return res.map(({ Field, Type, Key }) => ({ name: Field, type: Type, pk: Key === 'PRI' ? 1 : 0 }))

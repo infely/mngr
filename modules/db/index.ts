@@ -6,6 +6,8 @@ export interface DbCol {
 
 export interface Db {
   tables(): Promise<string[]>
+  databases(): Promise<string[]>
+  setDb(db: string): void
   cols(table: string, rows?: object[] | object[][]): DbCol[] | Promise<DbCol[]>
   rows(table: string, where?: object, order?: object, skip?: number, limit?: number): Promise<[string, number, object[], DbCol[] | undefined]>
   id(cols?: DbCol[]): string

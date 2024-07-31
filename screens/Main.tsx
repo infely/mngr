@@ -75,6 +75,7 @@ export default () => {
   const cols = useStore(s => s.cols)
   const rows = useStore(s => s.rows)
   const palette = useStore(s => s.palette)
+  const selectDb = useStore(s => s.selectDb)
   const [pos, setPos] = useState<ListPos>({ y: 0, x: 0, yo: 0, xo: 0, x1: 0, x2: 0 })
   const [o, setO] = useState<{ where: object; order: object; skip: number; limit: number }>({
     where: {},
@@ -153,7 +154,7 @@ export default () => {
 
   const onEditSubmit = useCallback(
     (value: any) => {
-      ;(async () => {
+      ; (async () => {
         dispatch('setFocus', 'main')
         const json = rows[pos.y]
         const jsonNew = { ...json, [cols[pos.x].name]: value }
@@ -407,8 +408,8 @@ export default () => {
 
   return (
     <>
-      {!preview && data.length === 0 && focus === 'main' && <Text dim>empty</Text>}
-      {!preview && data.length > 0 && (
+      {!selectDb && !preview && data.length === 0 && focus === 'main' && <Text dim>empty</Text>}
+      {!selectDb && !preview && data.length > 0 && (
         <>
           <ListTable
             focus={focus === 'main'}

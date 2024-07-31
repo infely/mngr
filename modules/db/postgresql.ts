@@ -12,6 +12,7 @@ export default class DbPostgresql implements Db {
     const { rows } = await this.db.query('SELECT * FROM pg_catalog.pg_database')
     return rows.map(i => i.datname).sort((a: string, b: string) => a.localeCompare(b))
   }
+  setDb(db: string): void {}
   async tables() {
     const { rows } = await this.db.query(
       `SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'`

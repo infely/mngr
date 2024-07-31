@@ -60,6 +60,7 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.7",
     "@types/node": "^20.8.10",
     "@types/pg": "^8.10.7",
     "@types/react": "^18.2.33",
