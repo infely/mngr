@@ -52,6 +52,7 @@
     "postdist": "bin/postdist.js && mv .dist/index.cjs ~/.bin/mngr"
   },
   "dependencies": {
+    "@babel/eslint-parser": "^7.25.0",
     "mariadb": "^3.2.2",
     "mongodb": "^6.2.0",
     "pg": "^8.11.3",
@@ -59,10 +60,10 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.7",
     "@types/node": "^20.8.10",
     "@types/pg": "^8.10.7",
     "@types/react": "^18.2.33",
-    "babel-eslint": "^10.1.0",
     "eslint": "^8.52.0"
   }
 }

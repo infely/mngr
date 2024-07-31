@@ -4,6 +4,7 @@ export const initialState = {
   status: '',
   databases: [],
   database: 0,
+  selectDb: false,
   tables: [],
   table: 0,
   count: 0,
@@ -49,5 +50,8 @@ export const actions = {
   },
   setCount(state: any, count: any = 0) {
     return { ...state, count }
+  },
+  setSelectDb(state: any, selectDb: any = false) {
+    return { ...state, selectDb }
   }
 }

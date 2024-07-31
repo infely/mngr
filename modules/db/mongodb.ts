@@ -1,17 +1,30 @@
 import { MongoClient, ObjectId, type Db as MongoDb, type Sort } from 'mongodb'
 import { type Db, type DbCol } from '.'
+import { dispatch } from '../../store'
 
 export default class DbMongodb implements Db {
   db: MongoDb
+  client: MongoClient
   constructor(url: string) {
     const [hostport, table] = url.split('/', 2)
-    const client = new MongoClient(`mongodb://${hostport}`)
-    client.connect()
-    this.db = client.db(table)
+    this.client = new MongoClient(`mongodb://${hostport}`)
+    this.client.connect()
+    if (!table) {
+      dispatch("setSelectDb", true)
+    }
+    this.setDb(table)
   }
   async tables() {
     const tables = await this.db.listCollections().toArray()
     return tables.map(({ name }) => name).sort((a: string, b: string) => a.localeCompare(b))
+  }
+  async databases(): Promise<string[]> {
+    const admin = this.client.db().admin();
+    const dbInfo = await admin.listDatabases();
+    return dbInfo.databases.map((db) => db.name)
+  }
+  setDb(db: string): void {
+    this.db = this.client.db(db)
   }
   cols(_table: string, rows?: object[] | object[][]): DbCol[] {
     const cols = {}
@@ -43,9 +56,8 @@ export default class DbMongodb implements Db {
 
     const count = await this.db.collection(table).countDocuments()
 
-    const sql = `db.${table}.find(${JSON.stringify(where)})${
-      Object.keys(order).length > 0 ? `.sort(${JSON.stringify(order)})` : ''
-    }${skip > 0 ? `.skip(${skip})` : ''}${count > limit ? `.limit(${limit})` : ''}`
+    const sql = `db.${table}.find(${JSON.stringify(where)})${Object.keys(order).length > 0 ? `.sort(${JSON.stringify(order)})` : ''
+      }${skip > 0 ? `.skip(${skip})` : ''}${count > limit ? `.limit(${limit})` : ''}`
 
     where = Object.fromEntries(
       Object.entries(where).map(([key, value]) => {
@@ -92,7 +104,7 @@ export default class DbMongodb implements Db {
       )
     )
   }
-  #convert(cols: DbCol[], jsonNew: any) {
+  convert(cols: DbCol[], jsonNew: any) {
     const types = Object.fromEntries(cols.map(({ name, type }) => [name, type]))
     return Object.fromEntries(
       Object.entries(jsonNew).map(([key, value]) => {
@@ -113,7 +125,7 @@ export default class DbMongodb implements Db {
   async insert(table: string, cols: DbCol[], jsons: object[]) {
     const { insertedIds } = await this.db
       .collection(table)
-      .insertMany(jsons.map(jsonNew => this.#convert(cols, jsonNew)))
+      .insertMany(jsons.map(jsonNew => this.convert(cols, jsonNew)))
     return Object.values(insertedIds).map(i => i.toString())
   }
   async update(table: string, cols: DbCol[], jsonsNew: any, jsonsOld: any) {
@@ -123,7 +135,7 @@ export default class DbMongodb implements Db {
       const jsonOld = jsonsOld[index]
 
       const { _id } = jsonOld
-      const $set = this.#convert(
+      const $set = this.convert(
         cols,
         Object.fromEntries(
           Object.entries(jsonNew)
@@ -132,7 +144,7 @@ export default class DbMongodb implements Db {
             .filter(i => i) as any
         )
       )
-      const $unset = this.#convert(
+      const $unset = this.convert(
         cols,
         Object.fromEntries(
           Object.keys(jsonOld)

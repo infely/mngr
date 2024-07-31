@@ -37,6 +37,10 @@ export default class DbJson implements Db {
 
     return tables
   }
+  async databases(): Promise<string[]> {
+    return []
+  }
+  setDb(db: string): void {}
   cols(_table: string, rows?: object[] | object[][]) {
     const cols = {}
     rows?.forEach(row =>
