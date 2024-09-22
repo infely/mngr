@@ -89,7 +89,7 @@ export default () => {
   const [initialValue, setInitialValue] = useState<string>('')
 
   const findRelationTableIndex = (name: string) => {
-    const q = name.replace(/Id$/, '').replace(/_id$/, '')
+    const q = name.replace(/Id$/, '').replace(/_id$/, '').toLowerCase()
     return tables.findIndex((i: string) => [q, `${q}s`, `${q}es`].includes(i.toLowerCase()))
   }
 
