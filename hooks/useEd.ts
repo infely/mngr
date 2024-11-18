@@ -14,34 +14,36 @@ export default (jsons: any) => {
     .filter(i => i)
     .join('\n')
 
-  return new Promise<object[]>(resolve => async () => {
-    await writeFile(filename, json)
-    const mtime = (await stat(filename)).mtimeMs
+  return new Promise<object[]>(resolve => {
+    ;(async () => {
+      await writeFile(filename, json)
+      const mtime = (await stat(filename)).mtimeMs
 
-    const onExit = async () => {
-      const mtimeNew = (await stat(filename)).mtimeMs
-      if (mtime === mtimeNew) {
-        unlink(filename)
-        return resolve([])
+      const onExit = async () => {
+        const mtimeNew = (await stat(filename)).mtimeMs
+        if (mtime === mtimeNew) {
+          unlink(filename)
+          return resolve([])
+        }
+
+        const res = await readFile(filename, { encoding: 'utf8' })
+        if (res.length === 0) {
+          unlink(filename)
+          return resolve([])
+        }
+
+        try {
+          const jsonNew = JSON.parse(`[${res.trim().replace(/},$/, '}')}]`)
+          unlink(filename)
+          resolve(jsonNew)
+        } catch {
+          Renderer.spawnSync(EDITOR, [filename], { stdio: 'inherit' })
+          onExit()
+        }
       }
 
-      const res = await readFile(filename, { encoding: 'utf8' })
-      if (res.length === 0) {
-        unlink(filename)
-        return resolve([])
-      }
-
-      try {
-        const jsonNew = JSON.parse(`[${res.trim().replace(/},$/, '}')}]`)
-        unlink(filename)
-        resolve(jsonNew)
-      } catch {
-        Renderer.spawnSync(EDITOR, [filename], { stdio: 'inherit' })
-        onExit()
-      }
-    }
-
-    Renderer.spawnSync(EDITOR, [filename], { stdio: 'inherit' })
-    onExit()
+      Renderer.spawnSync(EDITOR, [filename], { stdio: 'inherit' })
+      onExit()
+    })()
   })
 }

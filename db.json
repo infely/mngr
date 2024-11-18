@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "role": 3,
+      "activated": true,
+      "hobbies": [
+        "code",
+        "music"
+      ],
+      "foo": {
+        "bar": 42,
+        "baz": false
+      }
+    },
+    {
+      "id": 2,
+      "name": "Tester",
+      "role": 0,
+      "activated": true
+    },
+    {
+      "id": 3,
+      "name": "User 3",
+      "role": 0,
+      "activated": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Title 1",
+      "body": "Body",
+      "published": true
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "userId": 2,
+      "postId": 1,
+      "body": "Body 1"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "postId": 2,
+      "body": "Body 2"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "postId": 3,
+      "body": "Body 3"
+    }
+  ]
+}

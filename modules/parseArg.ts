@@ -7,6 +7,12 @@ if (argv.length > 2) {
   if (!url.includes('://')) {
     if (url.endsWith('.json')) url = `json://${url}`
     if (url.endsWith('.db') || url.endsWith('.sqlite') || url.endsWith('sqlite3')) url = `sqlite://${url}`
+  } else {
+    const [protocol, options] = url.split('://', 2)
+    if (!Object.keys(TYPES).includes(protocol)) {
+      const index = Object.values(TYPES).findIndex(i => i.aliases.includes(protocol))
+      if (index > -1) url = `${Object.keys(TYPES)[index]}://${options}`
+    }
   }
 }
 
@@ -21,8 +27,8 @@ EXAMPLES:
   mngr mongodb:///db
   mngr mongodb://localhost/db
 
-  mngr postgres:///db
-  mngr postgres://localhost/db
+  mngr postgresql:///db
+  mngr postgresql://localhost/db
 
   mngr mariadb:///db
   mngr mariadb://localhost/db
