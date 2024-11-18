@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { Input, Text, List, type ListPos, useInput, useMouse, useSize } from 'react-curse'
 import useDb from '../hooks/useDb'
 import { dispatch, useStore } from '../store'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { Input, Text, List, type ListPos, useInput, useMouse, useSize } from 'react-curse'
 
-export default () => {
+export default function Sidebar() {
   const { height } = useSize()
   const db = useDb()
   const focus = useStore(s => s.focus)

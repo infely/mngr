@@ -1,7 +1,8 @@
 import { stat, writeFile, readFile, unlink } from 'node:fs/promises'
-import { join } from 'node:path'
 import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import Renderer from 'react-curse'
+
 // import { EJSON } from 'bson'
 
 export default (jsons: any) => {
@@ -13,7 +14,7 @@ export default (jsons: any) => {
     .filter(i => i)
     .join('\n')
 
-  return new Promise<object[]>(async resolve => {
+  return new Promise<object[]>(resolve => async () => {
     await writeFile(filename, json)
     const mtime = (await stat(filename)).mtimeMs
 
@@ -34,7 +35,7 @@ export default (jsons: any) => {
         const jsonNew = JSON.parse(`[${res.trim().replace(/},$/, '}')}]`)
         unlink(filename)
         resolve(jsonNew)
-      } catch (e) {
+      } catch {
         Renderer.spawnSync(EDITOR, [filename], { stdio: 'inherit' })
         onExit()
       }

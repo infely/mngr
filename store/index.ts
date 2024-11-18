@@ -1,5 +1,5 @@
-import { useSyncExternalStore } from 'react'
 import { initialState, actions } from './store'
+import { useSyncExternalStore } from 'react'
 
 const createStore = (initialState: any) => {
   let state = initialState
@@ -11,7 +11,7 @@ const createStore = (initialState: any) => {
       state = actions[action](state, payload)
       listeners.forEach((listener: any) => listener(state))
     },
-    subscribe: (listener: Function) => {
+    subscribe: (listener: any) => {
       listeners.add(listener)
       return () => listeners.delete(listener)
     }

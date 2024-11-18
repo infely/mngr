@@ -1,5 +1,5 @@
-import pg, { type Client } from 'pg'
 import { type Db, type DbCol } from '.'
+import pg, { type Client } from 'pg'
 
 export default class DbPostgresql implements Db {
   db: Client
@@ -53,7 +53,9 @@ export default class DbPostgresql implements Db {
     try {
       const res = await this.db.query(sql)
       rows = res.rows
-    } catch {}
+    } catch {
+      //
+    }
 
     sql = sql.replace(' ORDER BY 1', '')
 
@@ -159,7 +161,7 @@ export default class DbPostgresql implements Db {
     try {
       await this.db.query(`CREATE TABLE "${table}" (id SERIAL PRIMARY KEY)`)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }
@@ -167,7 +169,7 @@ export default class DbPostgresql implements Db {
     try {
       await this.db.query(`ALTER TABLE "${table}" RENAME TO ${tableNew}`)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }

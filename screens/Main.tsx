@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Text, Input, ListTable, type ListPos, View, useClipboard, useInput, useSize, useMouse } from 'react-curse'
 import Preview from '../components/Preview'
 import useDb from '../hooks/useDb'
 import useEd from '../hooks/useEd'
 import { dispatch, useStore } from '../store'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Text, Input, ListTable, ListPos, View, useClipboard, useInput, useSize, useMouse } from 'react-curse'
+
 // import { EJSON } from 'bson'
 
 class HeadItem {
@@ -18,7 +19,7 @@ class HeadItem {
   }
 }
 
-const Head = ({ item, widths }) => {
+const Head = ({ item, widths }: any) => {
   return (
     <>
       {item.map(({ text, props }, index: number) => (
@@ -30,10 +31,10 @@ const Head = ({ item, widths }) => {
   )
 }
 
-const Row = ({ focus, item, y, x, widths, index, pass }) => {
+const Row = ({ focus, item, y, x, widths, index, pass }: any) => {
   const { selected, palette } = pass
 
-  const truncate = (i: any, width: number) => {
+  const truncate = (i: unknown, width: number) => {
     if (i === undefined) return ''
     if (i === null) return 'null'
     if (i.toString().length <= width) return i.toString()
@@ -62,11 +63,11 @@ const Row = ({ focus, item, y, x, widths, index, pass }) => {
   )
 }
 
-export default () => {
+export default function Main() {
   const { width, height } = useSize()
   const db = useDb()
   const [, setClipboard] = useClipboard()
-  const nextOptions = useRef<{ where?: {} }>({})
+  const nextOptions = useRef<{ where?: object }>({})
   const focus = useStore(s => s.focus)
   const status = useStore(s => s.status)
   const tables = useStore(s => s.tables)
@@ -269,13 +270,15 @@ export default () => {
 
     let valueNew: any
     switch (type) {
-      case 'boolean':
+      case 'boolean': {
         valueNew = !value
         break
-      case 'number':
+      }
+      case 'number': {
         valueNew = value + diff
         break
-      case 'string':
+      }
+      case 'string': {
         let match: RegExpMatchArray
         if ((match = value.match(/(-?\d+[,.]?\d*)$/))) {
           const [, number] = match
@@ -284,6 +287,7 @@ export default () => {
             valueNew = value.substring(0, index) + (parseFloat(number) + diff)
         }
         break
+      }
     }
     if (valueNew === undefined) return
 

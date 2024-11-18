@@ -5,10 +5,7 @@
       "name": "Admin",
       "role": 3,
       "activated": true,
-      "hobbies": [
-        "code",
-        "music"
-      ],
+      "hobbies": ["code", "music"],
       "foo": {
         "bar": 42,
         "baz": false

@@ -1,5 +1,5 @@
-import mariadb, { type Pool } from 'mariadb'
 import { type Db, type DbCol } from '.'
+import mariadb, { type Pool } from 'mariadb'
 
 export default class DbMariadb implements Db {
   db: Pool
@@ -24,7 +24,7 @@ export default class DbMariadb implements Db {
     const res = await this.db.query(`SELECT COUNT(*) FROM ${table}`)
     const count = parseInt(res?.[0]?.['COUNT(*)'] ?? 0)
 
-    let sql = `SELECT * FROM ${table}${
+    const sql = `SELECT * FROM ${table}${
       Object.keys(where).length > 0
         ? ` WHERE ${Object.entries(where)
             .map(([k, v]) => (v.$regex ? `${k} LIKE '%${v.$regex}%'` : `${k} = '${v}'`))
@@ -72,7 +72,7 @@ export default class DbMariadb implements Db {
     for (const jsonNew of jsons) {
       const res = await this.db.query(
         `INSERT INTO ${table} VALUES (${Object.keys(jsonNew)
-          .map(_ => '?')
+          .map(() => '?')
           .join(', ')})`,
         [...Object.values(jsonNew)]
       )
@@ -117,7 +117,7 @@ export default class DbMariadb implements Db {
     try {
       await this.db.query(`CREATE TABLE ${table} (id INT AUTO_INCREMENT PRIMARY KEY)`)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }
@@ -125,7 +125,7 @@ export default class DbMariadb implements Db {
     try {
       await this.db.query(`ALTER TABLE ${table} RENAME TO ${tableNew}`)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }

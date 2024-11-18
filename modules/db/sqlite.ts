@@ -1,5 +1,5 @@
-import sqlite3, { type RunResult } from 'sqlite3'
 import { type Db, type DbCol } from '.'
+import sqlite3, { type RunResult } from 'sqlite3'
 
 const { Database } = sqlite3.verbose()
 
@@ -63,7 +63,7 @@ export default class DbSqlite implements Db {
 
           resolve(res)
         })
-      } catch (e) {
+      } catch {
         resolve([])
       }
     })
@@ -105,7 +105,7 @@ export default class DbSqlite implements Db {
         const id = await new Promise<string>(resolve => {
           this.db.run(
             `INSERT INTO ${table} VALUES (${Object.keys(jsonNew)
-              .map(_ => '?')
+              .map(() => '?')
               .join(', ')})`,
             [...Object.values(jsonNew)],
             function (err: Error | null) {
@@ -116,7 +116,7 @@ export default class DbSqlite implements Db {
           )
         })
         ids.push(id)
-      } catch (e) {
+      } catch {
         return null
       }
     }
@@ -149,7 +149,7 @@ export default class DbSqlite implements Db {
           )
         })
         if (id) ids.push(id)
-      } catch (e) {
+      } catch {
         return null
       }
     }

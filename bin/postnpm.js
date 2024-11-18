@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import { chmodSync, readFileSync, writeFileSync } from 'node:fs'
 
 const makeJs = () => {

@@ -7,7 +7,13 @@ export interface DbCol {
 export interface Db {
   tables(): Promise<string[]>
   cols(table: string, rows?: object[] | object[][]): DbCol[] | Promise<DbCol[]>
-  rows(table: string, where?: object, order?: object, skip?: number, limit?: number): Promise<[string, number, object[], DbCol[] | undefined]>
+  rows(
+    table: string,
+    where?: object,
+    order?: object,
+    skip?: number,
+    limit?: number
+  ): Promise<[string, number, object[], DbCol[] | undefined]>
   id(cols?: DbCol[]): string
   types(): object
   format(cols: DbCol[], rows: object[]): object[]

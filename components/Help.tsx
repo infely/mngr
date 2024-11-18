@@ -1,8 +1,8 @@
+import { useStore } from '../store'
 import React, { useMemo } from 'react'
 import { Separator, Text, useSize } from 'react-curse'
-import { useStore } from '../store'
 
-export default () => {
+export default function Help() {
   const { width } = useSize()
   const focus = useStore(s => s.focus)
   const palette = useStore(s => s.palette)

@@ -1,5 +1,5 @@
-import process, { argv } from 'node:process'
 import { TYPES } from '../hooks/useDb'
+import process, { argv } from 'node:process'
 
 let url: string = ''
 if (argv.length > 2) {

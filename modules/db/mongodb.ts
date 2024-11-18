@@ -1,5 +1,5 @@
-import { MongoClient, ObjectId, type Db as MongoDb, type Sort } from 'mongodb'
 import { type Db, type DbCol } from '.'
+import { MongoClient, ObjectId, type Db as MongoDb, type Sort } from 'mongodb'
 
 export default class DbMongodb implements Db {
   db: MongoDb
@@ -161,7 +161,7 @@ export default class DbMongodb implements Db {
     try {
       await this.db.createCollection(table)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }
@@ -169,7 +169,7 @@ export default class DbMongodb implements Db {
     try {
       await this.db.renameCollection(table, tableNew)
       return true
-    } catch (err) {
+    } catch {
       return false
     }
   }
@@ -177,7 +177,7 @@ export default class DbMongodb implements Db {
     try {
       await this.db.dropCollection(table)
       return true
-    } catch (e) {
+    } catch {
       return false
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-curse'
 
-export default (children: object) => {
+export default function Preview(children: object) {
   const res =
     'x1b[0m' +
     JSON.stringify(
@@ -15,9 +15,9 @@ export default (children: object) => {
       },
       2
     )
-      .replace(/\{\s*"\$(string)":\s*\"(.*?)\"\s*\}/g, '"$2"')
-      .replace(/\{\s*"\$(number|boolean)":\s*\"(.*?)\"\s*\}/g, '$2')
-      .replace(/\"([^"]+)\":/g, 'x1b[Redm$1x1b[0m:')
+      .replace(/\{\s*"\$(string)":\s*"(.*?)"\s*\}/g, '"$2"')
+      .replace(/\{\s*"\$(number|boolean)":\s*"(.*?)"\s*\}/g, '$2')
+      .replace(/"([^"]+)":/g, 'x1b[Redm$1x1b[0m:')
   return (
     <Text>
       {res.split('x1b[').map((i, key) => {

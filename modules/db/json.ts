@@ -1,5 +1,5 @@
-import { readFile, writeFile } from 'fs/promises'
 import { type Db, type DbCol } from '.'
+import { readFile, writeFile } from 'fs/promises'
 
 export default class DbJson implements Db {
   #filename: string
@@ -66,7 +66,7 @@ export default class DbJson implements Db {
 
     let rows: object[]
     if (table === '.') {
-      rows = [Object.fromEntries(Object.entries(json).filter(([_, value]) => !this.#isCollection(value)))]
+      rows = [Object.fromEntries(Object.entries(json).filter(([, value]) => !this.#isCollection(value)))]
       sql = sql.substring(0, 2) + sql.substring(4)
     } else {
       rows = json[table]

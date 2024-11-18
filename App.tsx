@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react'
-import ReactCurse, { Text, Separator, useInput, useExit, useSize } from 'react-curse'
-import Sidebar from './screens/Sidebar'
-import Main from './screens/Main'
 import Help from './components/Help'
-import { useStore } from './store'
 import { initDb } from './hooks/useDb'
 import url from './modules/parseArg'
+import Main from './screens/Main'
+import Sidebar from './screens/Sidebar'
+import { useStore } from './store'
+import React, { useMemo, useState } from 'react'
+import ReactCurse, { Text, Separator, useInput, useSize } from 'react-curse'
 
 initDb(url)
 
@@ -31,8 +31,8 @@ const App = () => {
     (input: string) => {
       if (![null, 'sidebar', 'main'].includes(focus)) return
 
-      if (input === '\x10\x0d') useExit()
-      if (input === 'q') useExit()
+      if (input === '\x10\x0d') ReactCurse.exit()
+      if (input === 'q') ReactCurse.exit()
       if (input === '?') setHelp(i => !i)
       if (input === '\x1b' && help) setHelp(false)
     },
