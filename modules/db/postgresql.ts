@@ -3,9 +3,11 @@ import pg, { type Client } from 'pg'
 
 export default class DbPostgresql implements Db {
   db: Client
-  constructor(url: string) {
-    const [host, database] = url.split('/')
-    this.db = new pg.Client({ host, database })
+  constructor(i: string) {
+    const url = new URL(`postgress://${i}`)
+    const [, database] = url.pathname.split('/', 3)
+
+    this.db = new pg.Client({ user: url.username, password: url.password, host: url.hostname, port: url.port ? Number(url.port) : undefined, database })
     this.db.connect()
   }
   async databases() {
