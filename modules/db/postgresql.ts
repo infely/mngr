@@ -20,7 +20,7 @@ export default class DbPostgresql implements Db {
     )
     return rows
       .map((i: any) => i.tablename)
-      .filter(i => !i.startsWith('_'))
+      // .filter(i => !i.startsWith('_'))
       .sort((a: string, b: string) => a.localeCompare(b))
   }
   async cols(table: string) {
@@ -64,7 +64,7 @@ export default class DbPostgresql implements Db {
     return [sql, count, rows, undefined]
   }
   id(cols: DbCol[]) {
-    return cols.find(({ pk }) => pk === 1)?.name ?? 'id'
+    return cols.find(i => i.name === 'id')?.name ?? cols.find((i) => i.pk === 1)?.name ?? 'id'
   }
   types() {
     return {
