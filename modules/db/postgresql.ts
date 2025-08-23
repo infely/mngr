@@ -7,7 +7,13 @@ export default class DbPostgresql implements Db {
     const url = new URL(`postgress://${i}`)
     const [, database] = url.pathname.split('/', 3)
 
-    this.db = new pg.Client({ user: url.username, password: url.password, host: url.hostname, port: url.port ? Number(url.port) : undefined, database })
+    this.db = new pg.Client({
+      user: url.username,
+      password: url.password,
+      host: url.hostname,
+      port: url.port ? Number(url.port) : undefined,
+      database
+    })
     this.db.connect()
   }
   async databases() {
@@ -18,10 +24,12 @@ export default class DbPostgresql implements Db {
     const { rows } = await this.db.query(
       `SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'`
     )
-    return rows
-      .map((i: any) => i.tablename)
-      // .filter(i => !i.startsWith('_'))
-      .sort((a: string, b: string) => a.localeCompare(b))
+    return (
+      rows
+        .map((i: any) => i.tablename)
+        // .filter(i => !i.startsWith('_'))
+        .sort((a: string, b: string) => a.localeCompare(b))
+    )
   }
   async cols(table: string) {
     const { rows } = await this.db.query('SELECT * FROM information_schema.columns WHERE table_name = $1', [table])
@@ -64,7 +72,7 @@ export default class DbPostgresql implements Db {
     return [sql, count, rows, undefined]
   }
   id(cols: DbCol[]) {
-    return cols.find(i => i.name === 'id')?.name ?? cols.find((i) => i.pk === 1)?.name ?? 'id'
+    return cols.find(i => i.name === 'id')?.name ?? cols.find(i => i.pk === 1)?.name ?? 'id'
   }
   types() {
     return {
