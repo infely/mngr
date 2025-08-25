@@ -1,24 +1,28 @@
-# mngr 2
+# mngr
 
-**mngr** (databases **m**a**n**a**g**e**r**) is a command-line cross-platform databases management TUI tool
+mngr (short for **m**a**n**a**g**e**r**) is a modern command-line database management tool with a text user interface (TUI).
 
-- Easy to use
-- Works with your `$EDITOR`
-- Has vim-like keybindings
+It's cross-platform, lightweight, and designed for developers who love vim, tmux, and `$EDITOR` workflows.
+
+- Fast & easy to use – no heavy GUI required
+- Works with your favorite `$EDITOR`
+- Vim-like keybindings for efficient navigation
 
 ![](media/demo.gif)
 
-- Built with [react-curse](https://github.com/infely/react-curse). Created for vim, tmux lovers :heart:
+- Built with [react-curse](https://github.com/infely/react-curse) – created for terminal power users :heart:
 
 ## Supported databases
 
-- mongodb
-- mysql/mariadb
-- postgres
-- sqlite
-- json ([json-server](https://github.com/typicode/json-server) compatible)
+- MongoDB
+- MariaDB/MySQL
+- PostgreSQL
+- SQLite
+- JSON ([json-server](https://github.com/typicode/json-server) compatible)
 
-## Try
+## Quick Start
+
+Run instantly with npx (no install required):
 
 ```bash
 npx mngr
@@ -26,16 +30,24 @@ npx mngr
 
 ## Installation
 
+Install globally via npm:
+
 ```bash
 npm i -g mngr
 ```
 
 ## Usage
 
+Simply run:
+
 ```bash
 mngr
 ```
 
-## Note
+## Why mngr?
 
-mngr 1.0.8 (built with blessed) is deprecated but available for installation `npm i -g mngr@1.0.8`
+If you're tired of bloated GUIs and want a minimal, keyboard-driven database manager that feels like Vim in the terminal, mngr is for you. Perfect for:
+
+- Developers who prefer working in the terminal
+- Database admins who want quick access without switching tools
+- Anyone who values speed, simplicity, and productivity
