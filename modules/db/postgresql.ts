@@ -104,7 +104,7 @@ export default class DbPostgresql implements Db {
         Object.entries(row).map(([key, value]) => {
           if (value !== null) {
             if (['date', 'timestamp', 'timestamptz'].includes(types[key])) value = value.toISOString()
-            else if (types[key] === 'bytea') value = JSON.stringify(value)
+            else if (['bytea', 'jsonb'].includes(types[key])) value = JSON.stringify(value)
             else if (types[key] === 'bool') value = (value as any).toString().toLowerCase() === 'true'
           }
           return [key, value]

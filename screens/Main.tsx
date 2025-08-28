@@ -382,6 +382,7 @@ export default function Main() {
       if (input === 'r') reload()
       if (input === 'Y') insertHandler(true)
       if (input === 'i') setPreview(preview === null ? rows[pos.y] : null)
+      if (input === '\x1b' /* esc */) setPreview(null)
       if (input === '[' && o.skip > 0) setO({ ...o, skip: Math.max(0, o.skip - o.limit) })
       if (input === ']' && o.skip < count - o.limit)
         setO({ ...o, skip: Math.max(0, Math.min(count - rows.length, o.skip + o.limit)) })
