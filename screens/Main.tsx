@@ -240,7 +240,7 @@ export default function Main() {
     const op = ['text'].includes(type) ? ':' : '='
 
     setInitialValue(name ? `/${name}${op}` : '')
-    dispatch('setFocus', 'main/search')
+    setTimeout(() => dispatch('setFocus', 'main/search'), 0)
   }
 
   const onSearchSubmit = useCallback(
