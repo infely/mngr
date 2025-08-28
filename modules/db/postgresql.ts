@@ -1,4 +1,5 @@
 import { type Db, type DbCol } from '.'
+import { prismaSchema } from '../prismaSchema'
 import pg, { type Client } from 'pg'
 
 export default class DbPostgresql implements Db {
@@ -33,7 +34,13 @@ export default class DbPostgresql implements Db {
   }
   async cols(table: string) {
     const { rows } = await this.db.query('SELECT * FROM information_schema.columns WHERE table_name = $1', [table])
-    return rows.map((i: any, index: number) => ({ name: i.column_name, type: i.udt_name, pk: index === 0 ? 1 : 0 }))
+    const cols = rows.map((i: any, index: number) => ({
+      name: i.column_name,
+      type: i.udt_name,
+      pk: index === 0 ? 1 : 0
+    }))
+    const order = prismaSchema.getCols(table)
+    return cols.sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))
   }
   async rows(
     table: string,
@@ -86,7 +93,8 @@ export default class DbPostgresql implements Db {
       int: { icon: '', color: 'Magenta' },
       text: { icon: '', color: 'Yellow' },
       timestamp: { icon: '', color: 'Red' },
-      varchar: { icon: '', color: 'Yellow' }
+      varchar: { icon: '', color: 'Yellow' },
+      jsonb: { icon: '', color: 'Magenta' }
     }
   }
   format(cols: DbCol[], rows: object[]) {
