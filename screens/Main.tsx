@@ -7,6 +7,8 @@ import { Text, Input, ListTable, ListPos, View, useClipboard, useInput, useSize,
 
 // import { EJSON } from 'bson'
 
+const SEP_R1 = process.env.SEP_R1 ?? ''
+
 class HeadItem {
   text: string
   props: object
@@ -451,13 +453,13 @@ export default function Main() {
       )}
       <Text absolute y="100%-2" x={`100%-${info1.length + info2.length + 2}`} height={1} bold>
         <Text background={palette.dark1} color={palette.dark2}>
-          
+          {SEP_R1}
         </Text>
         <Text background={palette.dark2} color={palette.light1}>
           {info1}
         </Text>
         <Text background={palette.dark2} color={palette.light4}>
-          
+          {SEP_R1}
         </Text>
         <Text background={palette.light4} color={palette.dark0} bold>
           {info2}
